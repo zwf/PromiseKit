@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PromiseKit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+
+
+    <a title="PromiseKit  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          PromiseKit Docs
+        </a>
+        
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/mxcl/PromiseKit">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://http%3A%2F%2Fpromisekit%2Eorg%2Fdocs%2Fhandbook%2Fdocsets%2FPromiseKit%2Exml">
+            <img class="header-icon" src="img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">PromiseKit Reference</a>
+      <img class="carat" src="img/carat.png" />
+      PromiseKit  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Promise.html">Promise</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/AnyPromise.html">AnyPromise</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit4whenurFT9fulfilledGSaGCS_7Promisex___GS0_GSax__">when(fulfilled:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit4whenFt9fulfilledGSaGCS_7PromiseT____GS0_T__">when(fulfilled:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit4whenFT9fulfilledGSaGCS_7PromiseT____GS0_T__">when(fulfilled:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit4whenurFt8resolvedGSaGCS_7Promisex___GS0_GSaGOS_6Resultx___">when(resolved:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit4whenurFT8resolvedGSaGCS_7Promisex___GS0_GSaGOS_6Resultx___">when(resolved:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit7firstlyFT7executeFzT_CS_10AnyPromise_GCS_7PromiseGSqP___">firstly(execute:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit7firstlyurFT7executeFzT_GCS_7Promisex__GS0_x_">firstly(execute:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit4raceurFT8promisesGSaGCS_7Promisex___GS0_x_">race(promises:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Functions.html#/s:F10PromiseKit5afterFT8intervalSd_GCS_7PromiseT__">after(interval:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Classes.html#/s:C10PromiseKit8PMKJoint">PMKJoint</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Enums.html">Other Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Result.html">Result</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other Functions.html">Other Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit16dispatch_promiseurFTCSo13DispatchQueueFzT_x_GCS_7Promisex_">dispatch_promise(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4joinFGSaGCS_7PromiseT___GS0_T__">join(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4joinurFGSaGCS_7Promisex__GS0_GSax__">join(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4joinurFtGSaGCS_7Promisex___GS0_GSax__">join(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4raceurFtGSaGCS_7Promisex___GS0_x_">race(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4whenu0_rFT9fulfilledGCS_7Promisex_GS0_q___GS0_Txq___">when(fulfilled:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4whenu1_rFT9fulfilledGCS_7Promisex_GS0_q__GS0_q0___GS0_Txq_q0___">when(fulfilled:_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4whenu0_R_s16IteratorProtocolw_7ElementzGCS_7Promisex_rFT9fulfilledq_12concurrentlySi_GS2_GSax__">when(fulfilled:concurrently:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4wrapFFzFGSqPs5Error__T_T_GCS_7PromiseT__">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4wrapurFFzFTGSqPs5Error__GSqx__T_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4wrapurFFzFTGSqx_GSqPs5Error___T_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4wrapurFFzFTxGSqPs5Error___T_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other Functions.html#/s:F10PromiseKit4wrapurFFzFxT_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <p><img src="http://promisekit.org/public/img/logo-tight.png" alt="PromiseKit"></p>
+
+<p><img src="https://img.shields.io/cocoapods/v/PromiseKit.svg?label=version" alt="badge-pod"> <img src="https://img.shields.io/badge/languages-Swift%20%7C%20ObjC-orange.svg" alt="badge-languages"> <img src="https://img.shields.io/badge/supports-CocoaPods%20%7C%20Carthage%20%7C%20SwiftPM-green.svg" alt="badge-pms"> <img src="https://img.shields.io/badge/platforms-macOS%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg" alt="badge-platforms"> <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="badge-mit"></p>
+
+<p>Modern development is highly asynchronous: isn’t it about time we had tools that
+made programming asynchronously powerful, easy and delightful?</p>
+<pre class="highlight swift"><code><span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">isNetworkActivityIndicatorVisible</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="n">firstly</span> <span class="p">{</span>
+    <span class="nf">when</span><span class="p">(</span><span class="kt">URLSession</span><span class="o">.</span><span class="nf">dataTask</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="nf">asImage</span><span class="p">(),</span> <span class="kt">CLLocationManager</span><span class="o">.</span><span class="nf">promise</span><span class="p">())</span>
+<span class="p">}</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">image</span><span class="p">,</span> <span class="n">location</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">imageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">;</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"</span><span class="se">\(</span><span class="n">location</span><span class="se">)</span><span class="s">"</span>
+<span class="p">}</span><span class="o">.</span><span class="n">always</span> <span class="p">{</span>
+    <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">isNetworkActivityIndicatorVisible</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span><span class="o">.</span><span class="k">catch</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="kt">UIAlertView</span><span class="p">(</span><span class="cm">/*…*/</span><span class="p">)</span><span class="o">.</span><span class="nf">show</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>PromiseKit is a thoughtful and complete implementation of promises for any
+platform with a <code>swiftc</code>, it has <em>excellent</em> Objective-C bridging and
+<em>delightful</em> specializations for iOS, macOS, tvOS and watchOS.</p>
+<a href='#quick-start' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='quick-start'>Quick Start</h1>
+
+<p>We recommend <a href="http://cocoapods.org">CocoaPods</a> or <a href="2016-09-05-PromiseKit-4.0-Released">Carthage</a>, however you can just drop <code>PromiseKit.xcodeproj</code> into your project and add <code>PromiseKit.framework</code> to your app’s embedded frameworks.</p>
+<a href='#xcode-8-swift-3' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='xcode-8-swift-3'>Xcode 8 / Swift 3</h2>
+<pre class="highlight ruby"><code><span class="c1"># CocoaPods &gt;= 1.1.0-rc.2</span>
+<span class="n">swift_version</span> <span class="o">=</span> <span class="s2">"3.0"</span>
+<span class="n">pod</span> <span class="s2">"PromiseKit"</span><span class="p">,</span> <span class="s2">"~&gt; 4.0"</span>
+
+<span class="c1"># Carthage</span>
+<span class="n">github</span> <span class="s2">"mxcl/PromiseKit"</span> <span class="o">~&gt;</span> <span class="mi">4</span><span class="o">.</span><span class="mi">0</span>
+
+<span class="c1"># SwiftPM</span>
+<span class="n">let</span> <span class="n">package</span> <span class="o">=</span> <span class="no">Package</span><span class="p">(</span>
+    <span class="ss">dependencies: </span><span class="p">[</span>
+        <span class="o">.</span><span class="no">Package</span><span class="p">(</span><span class="ss">url: </span><span class="s2">"https://github.com/mxcl/PromiseKit"</span><span class="p">,</span> <span class="ss">majorVersion: </span><span class="mi">4</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+<a href='#xcode-8-swift-2-3-or-xcode-7' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='xcode-8-swift-2-3-or-xcode-7'>Xcode 8 / Swift 2.3 or Xcode 7</h2>
+<pre class="highlight ruby"><code><span class="c1"># CocoaPods</span>
+<span class="n">swift_version</span> <span class="o">=</span> <span class="s2">"2.3"</span>
+<span class="n">pod</span> <span class="s2">"PromiseKit"</span><span class="p">,</span> <span class="s2">"~&gt; 3.5"</span>
+
+<span class="c1"># Carthage</span>
+<span class="n">github</span> <span class="s2">"mxcl/PromiseKit"</span> <span class="o">~&gt;</span> <span class="mi">3</span><span class="o">.</span><span class="mi">5</span>
+</code></pre>
+<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='documentation'>Documentation</h1>
+
+<p>We have thorough and complete documentation at <a href="http://promisekit.org/docs/">promisekit.org</a>.</p>
+<a href='#overview' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='overview'>Overview</h2>
+
+<p>Promises are defined by the function <code>then</code>:</p>
+<pre class="highlight swift"><code><span class="nf">login</span><span class="p">()</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">json</span> <span class="k">in</span>
+    <span class="c1">//…</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>They are chainable:</p>
+<pre class="highlight swift"><code><span class="nf">login</span><span class="p">()</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">json</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">UIImage</span><span class="o">&gt;</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="nf">fetchAvatar</span><span class="p">(</span><span class="n">json</span><span class="p">[</span><span class="s">"username"</span><span class="p">])</span>
+<span class="p">}</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">avatarImage</span> <span class="k">in</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">imageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">avatarImage</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Errors cascade through chains:</p>
+<pre class="highlight swift"><code><span class="nf">login</span><span class="p">()</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nf">fetchAvatar</span><span class="p">()</span>
+<span class="p">}</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">avatarImage</span> <span class="k">in</span>
+    <span class="c1">//…</span>
+<span class="p">}</span><span class="o">.</span><span class="k">catch</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="kt">UIAlertView</span><span class="p">(</span><span class="cm">/*…*/</span><span class="p">)</span><span class="o">.</span><span class="nf">show</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>They are composable:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">username</span> <span class="o">=</span> <span class="nf">login</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">{</span> <span class="nv">$0</span><span class="p">[</span><span class="s">"username"</span><span class="p">]</span> <span class="p">}</span>
+
+<span class="nf">when</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="kt">CLLocationManager</span><span class="o">.</span><span class="nf">promise</span><span class="p">())</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">user</span><span class="p">,</span> <span class="n">location</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="nf">fetchAvatar</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="nv">location</span><span class="p">:</span> <span class="n">location</span><span class="p">)</span>
+<span class="p">}</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">image</span> <span class="k">in</span>
+    <span class="c1">//…</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>They are trivial to refactor:</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">avatar</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">UIImage</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">username</span> <span class="o">=</span> <span class="nf">login</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">{</span> <span class="nv">$0</span><span class="p">[</span><span class="s">"username"</span><span class="p">]</span> <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nf">when</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="kt">CLLocationManager</span><span class="o">.</span><span class="nf">promise</span><span class="p">())</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">user</span><span class="p">,</span> <span class="n">location</span> <span class="k">in</span>
+        <span class="k">return</span> <span class="nf">fetchAvatar</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="nv">location</span><span class="p">:</span> <span class="n">location</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<a href='#continue-learning' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='continue-learning'>Continue Learning…</h2>
+
+<p>Complete and progressive learning guide at <a href="http://promisekit.org/docs/">promisekit.org</a>.</p>
+<a href='#promisekit-vs-xcode' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='promisekit-vs-xcode'>PromiseKit vs. Xcode</h2>
+
+<p>PromiseKit contains Swift, so we engage in an unending battle with Xcode:</p>
+
+<table><thead>
+<tr>
+<th>Swift</th>
+<th>Xcode</th>
+<th>PromiseKit</th>
+<th>CI Status</th>
+<th>Release Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>3</td>
+<td>8</td>
+<td>4</td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=master" alt="ci-master"></td>
+<td><a href="http://promisekit.org/news/2016/09/PromiseKit-4.0-Released/">2016/09</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>7/8</td>
+<td>3</td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=swift-2.x" alt="ci-swift2"></td>
+<td><a href="https://github.com/mxcl/PromiseKit/blob/master/CHANGELOG.markdown#300-oct-1st-2015">2015/10</a></td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>3</td>
+<td>–</td>
+<td><a href="https://github.com/mxcl/PromiseKit/blob/master/CHANGELOG.markdown#300-oct-1st-2015">2015/10</a></td>
+</tr>
+<tr>
+<td><em>N/A</em></td>
+<td>*</td>
+<td>1†</td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=legacy-1.x" alt="ci-legacy"></td>
+<td>–</td>
+</tr>
+</tbody></table>
+
+<p>† PromiseKit 1 is pure Objective-C and thus can be used with any Xcode, it is
+also your only choice if you need to support iOS 7 or below.</p>
+
+<hr>
+
+<p>We also maintain some branches to aid migrating between Swift versions:</p>
+
+<table><thead>
+<tr>
+<th>Xcode</th>
+<th>Swift</th>
+<th>PromiseKit</th>
+<th>Branch</th>
+<th>CI Status</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>8.0</td>
+<td>2.3</td>
+<td>2</td>
+<td><a href="https://github.com/mxcl/PromiseKit/tree/swift-2.3-minimal-changes">swift-2.3-minimal-changes</a></td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=swift-2.3-minimal-changes" alt="ci-23"></td>
+</tr>
+<tr>
+<td>7.3</td>
+<td>2.2</td>
+<td>2</td>
+<td><a href="https://github.com/mxcl/PromiseKit/tree/swift-2.2-minimal-changes">swift-2.2-minimal-changes</a></td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=swift-2.2-minimal-changes" alt="ci-22"></td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>2.2</td>
+<td>2</td>
+<td><a href="https://github.com/mxcl/PromiseKit/tree/swift-2.2-minimal-changes">swift-2.2-minimal-changes</a></td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=swift-2.2-minimal-changes" alt="ci-22"></td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>2.1</td>
+<td>2</td>
+<td><a href="https://github.com/mxcl/PromiseKit/tree/swift-2.0-minimal-changes">swift-2.0-minimal-changes</a></td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=swift-2.0-minimal-changes" alt="ci-20"></td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>2.0</td>
+<td>2</td>
+<td><a href="https://github.com/mxcl/PromiseKit/tree/swift-2.0-minimal-changes">swift-2.0-minimal-changes</a></td>
+<td><img src="https://travis-ci.org/mxcl/PromiseKit.svg?branch=swift-2.0-minimal-changes" alt="ci-20"></td>
+</tr>
+</tbody></table>
+
+<p>We do <strong>not</strong> usually backport fixes to these branches, but pull-requests are welcome.</p>
+<a href='#extensions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='extensions'>Extensions</h1>
+
+<p>Promises are only as useful as the asynchronous tasks they represent, thus we 
+have converted (almost) all of Apple’s APIs to Promises. The default CocoaPod
+comes with promises UIKit and Foundation, the rest are accessed by specifying
+additional subspecs in your <code>Podfile</code>, eg:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"PromiseKit/MapKit"</span>        <span class="c1"># MKDirections().promise().then { /*…*/ }</span>
+<span class="n">pod</span> <span class="s2">"PromiseKit/CoreLocation"</span>  <span class="c1"># CLLocationManager.promise().then { /*…*/ }</span>
+</code></pre>
+
+<p>All our extensions are separate repositories at the <a href="https://github.com/PromiseKit">PromiseKit org </a>.</p>
+
+<p>For Carthage specify the additional repositories in your <code>Cartfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"PromiseKit/MapKit"</span> <span class="o">~&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span>
+</code></pre>
+<a href='#choose-your-networking-library' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='choose-your-networking-library'>Choose Your Networking Library</h2>
+
+<p><code>URLSession</code> is typically inadequate; choose from <a href="http://alamofire.org">Alamofire</a> or <a href="https://github.com/mxcl/OMGHTTPURLRQ">OMGHTTPURLRQ</a>:</p>
+<pre class="highlight swift"><code><span class="c1">// pod 'PromiseKit/Alamofire'  </span>
+<span class="kt">Alamofire</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="s">"http://example.com"</span><span class="p">,</span> <span class="nv">withMethod</span><span class="p">:</span> <span class="o">.</span><span class="kt">GET</span><span class="p">)</span><span class="o">.</span><span class="nf">responseJSON</span><span class="p">()</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">json</span> <span class="k">in</span>
+    <span class="c1">//…</span>
+<span class="p">}</span><span class="o">.</span><span class="k">catch</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">//…</span>
+<span class="p">}</span>
+
+<span class="c1">// pod 'PromiseKit/OMGHTTPURLRQ'</span>
+<span class="kt">URLSession</span><span class="o">.</span><span class="kt">GET</span><span class="p">(</span><span class="s">"http://example.com"</span><span class="p">)</span><span class="o">.</span><span class="nf">asDictionary</span><span class="p">()</span><span class="o">.</span><span class="n">then</span> <span class="p">{</span> <span class="n">json</span> <span class="k">in</span>
+
+<span class="p">}</span><span class="o">.</span><span class="k">catch</span> <span class="p">{</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">//…</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>For <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> we recommend <a href="https://github.com/csotiriou/AFNetworking-PromiseKit">csotiriou/AFNetworking</a>.</p>
+<a href='#support' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='support'>Support</h1>
+
+<p>Ask your question at our <a href="https://gitter.im/mxcl/PromiseKit">Gitter chat channel</a> or on
+<a href="https://github.com/mxcl/PromiseKit/issues/new">our bug tracker</a>.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2016 <a class="link" href="http://mxcl.github.io" target="_blank" rel="external">Max Howell</a>. All rights reserved. (Last updated: 2016-12-02)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Promise Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/Promise" class="dashAnchor"></a>
+
+    <a title="Promise Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          PromiseKit Docs
+        </a>
+        
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/mxcl/PromiseKit">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://http%3A%2F%2Fpromisekit%2Eorg%2Fdocs%2Fhandbook%2Fdocsets%2FPromiseKit%2Exml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">PromiseKit Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Promise Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Promise.html">Promise</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/AnyPromise.html">AnyPromise</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit4whenurFT9fulfilledGSaGCS_7Promisex___GS0_GSax__">when(fulfilled:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit4whenFt9fulfilledGSaGCS_7PromiseT____GS0_T__">when(fulfilled:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit4whenFT9fulfilledGSaGCS_7PromiseT____GS0_T__">when(fulfilled:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit4whenurFt8resolvedGSaGCS_7Promisex___GS0_GSaGOS_6Resultx___">when(resolved:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit4whenurFT8resolvedGSaGCS_7Promisex___GS0_GSaGOS_6Resultx___">when(resolved:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit7firstlyFT7executeFzT_CS_10AnyPromise_GCS_7PromiseGSqP___">firstly(execute:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit7firstlyurFT7executeFzT_GCS_7Promisex__GS0_x_">firstly(execute:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit4raceurFT8promisesGSaGCS_7Promisex___GS0_x_">race(promises:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Functions.html#/s:F10PromiseKit5afterFT8intervalSd_GCS_7PromiseT__">after(interval:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Classes.html#/s:C10PromiseKit8PMKJoint">PMKJoint</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Enums.html">Other Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Result.html">Result</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other Functions.html">Other Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit16dispatch_promiseurFTCSo13DispatchQueueFzT_x_GCS_7Promisex_">dispatch_promise(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4joinFGSaGCS_7PromiseT___GS0_T__">join(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4joinurFGSaGCS_7Promisex__GS0_GSax__">join(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4joinurFtGSaGCS_7Promisex___GS0_GSax__">join(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4raceurFtGSaGCS_7Promisex___GS0_x_">race(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4whenu0_rFT9fulfilledGCS_7Promisex_GS0_q___GS0_Txq___">when(fulfilled:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4whenu1_rFT9fulfilledGCS_7Promisex_GS0_q__GS0_q0___GS0_Txq_q0___">when(fulfilled:_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4whenu0_R_s16IteratorProtocolw_7ElementzGCS_7Promisex_rFT9fulfilledq_12concurrentlySi_GS2_GSax__">when(fulfilled:concurrently:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4wrapFFzFGSqPs5Error__T_T_GCS_7PromiseT__">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4wrapurFFzFTGSqPs5Error__GSqx__T_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4wrapurFFzFTGSqx_GSqPs5Error___T_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4wrapurFFzFTxGSqPs5Error___T_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other Functions.html#/s:F10PromiseKit4wrapurFFzFxT_T_GCS_7Promisex_">wrap(_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Promise</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span></code></pre>
+
+                </div>
+              </div>
+            <p>A <em>promise</em> represents the future value of a (usually) asynchronous task.</p>
+
+<p>To obtain the value of a promise we call <code>then</code>.</p>
+
+<p>Promises are chainable: <code>then</code> returns a promise, you can call <code>then</code> on
+that promise, which returns a promise, you can call <code>then</code> on that
+promise, et cetera.</p>
+
+<p>Promises start in a pending state and <em>resolve</em> with a value to become
+<em>fulfilled</em> or an <code>Error</code> to become rejected.</p>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <a href="http://promisekit.org/docs/">PromiseKit <code>then</code> Guide</a>
+
+</div>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C10PromiseKit7Promise12PendingTuple"></a>
+                    <a name="//apple_ref/swift/Alias/PendingTuple" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C10PromiseKit7Promise12PendingTuple">PendingTuple</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A <code>typealias</code> for the return values of <code><a href="../Classes/Promise.html#/s:ZFC10PromiseKit7Promise7pendingFT_T7promiseGS0_x_7fulfillFxT_6rejectFPs5Error_T__">pending()</a></code>. Simplifies declaration of properties that reference the values&rsquo; containing tuple when this is necessary. For example, when working with multiple <code>pendingPromise(value: ())</code>s within the same scope, or when the promise initialization must occur outside of the caller&rsquo;s initialization.</p>
+
+<pre class="highlight plaintext"><code>class Foo: BarDelegate {
+   var task: Promise&lt;Int&gt;.PendingTuple?
+}
+</code></pre>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    pending()
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">PendingTuple</span> <span class="o">=</span> <span class="p">(</span><span class="nv">promise</span><span class="p">:</span> <span class="kt">Promise</span><span class="p">,</span> <span class="nv">fulfill</span><span class="p">:</span> <span class="p">(</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">reject</span><span class="p">:</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7PromisecFT9resolversFzTFxT_FPs5Error_T__T__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(resolvers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7PromisecFT9resolversFzTFxT_FPs5Error_T__T__GS0_x_">init(resolvers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a new, pending promise.</p>
+
+<pre class="highlight plaintext"><code>func fetchAvatar(user: String) -&gt; Promise&lt;UIImage&gt; {
+    return Promise { fulfill, reject in
+        MyWebHelper.GET("\(user)/avatar") { data, err in
+            guard let data = data else { return reject(err) }
+            guard let img = UIImage(data: data) else { return reject(MyError.InvalidImage) }
+            guard let img.size.width &gt; 0 else { return reject(MyError.ImageTooSmall) }
+            fulfill(img)
+        }
+    }
+}
+</code></pre>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter resolvers: The provided closure is called immediately on the active thread; commence your asynchronous task, calling either fulfill or reject when it completes.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter fulfill: Fulfills this promise with the provided value.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter reject: Rejects this promise with the provided error.</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>A new promise.</p>
+
+</div>
+
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>If you are wrapping a delegate-based system, we recommend
+to use instead: <code><a href="../Classes/Promise.html#/s:ZFC10PromiseKit7Promise7pendingFT_T7promiseGS0_x_7fulfillFxT_6rejectFPs5Error_T__">Promise.pending()</a></code></p>
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><a href="http://promisekit.org/docs/sealing-promises/">http://promisekit.org/docs/sealing-promises/</a></p>
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><a href="http://promisekit.org/docs/cookbook/wrapping-delegation/">http://promisekit.org/docs/cookbook/wrapping-delegation/</a></p>
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p>pending()</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">required</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">resolvers</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span> <span class="nv">fulfill</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="n">_</span> <span class="nv">reject</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>resolvers</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The provided closure is called immediately on the active thread; commence your asynchronous task, calling either fulfill or reject when it completes.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fulfill</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Fulfills this promise with the provided value.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reject</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Rejects this promise with the provided error.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7PromisecFT5valuex_GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7PromisecFT5valuex_GS0_x_">init(value:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create an already fulfilled promise.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">required</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7PromisecFT5errorPs5Error__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/init(error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7PromisecFT5errorPs5Error__GS0_x_">init(error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create an already rejected promise.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">required</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC10PromiseKit7Promise7pendingFT_T7promiseGS0_x_7fulfillFxT_6rejectFPs5Error_T__"></a>
+                    <a name="//apple_ref/swift/Method/pending()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC10PromiseKit7Promise7pendingFT_T7promiseGS0_x_7fulfillFxT_6rejectFPs5Error_T__">pending()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Making promises that wrap asynchronous delegation systems or other larger asynchronous systems without a simple completion handler is easier with pending.</p>
+
+<pre class="highlight plaintext"><code>class Foo: BarDelegate {
+    let (promise, fulfill, reject) = Promise&lt;Int&gt;.pending()
+
+    func barDidFinishWithResult(result: Int) {
+        fulfill(result)
+    }
+
+    func barDidError(error: NSError) {
+        reject(error)
+    }
+}
+</code></pre>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    A tuple consisting of: 
+1) A promise
+2) A function that fulfills that promise
+3) A function that rejects that promise
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">pending</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Promise.html#/s:C10PromiseKit7Promise12PendingTuple">PendingTuple</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A tuple consisting of:</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise4thenurFT2onCSo13DispatchQueue7executeFzxqd___GS0_qd___"></a>
+                    <a name="//apple_ref/swift/Method/then(on:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise4thenurFT2onCSo13DispatchQueue7executeFzxqd___GS0_qd___">then(on:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The provided closure is executed when this promise is resolved.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter on: The queue to which the provided closure dispatches.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter body: The closure that is executed when this Promise is fulfilled.
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>A new promise that is resolved with the value returned from the provided closure. For example:</p>
+
+<p>URLSession.GET(url).then { data -&gt; Int in
+      //…
+      return data.length
+  }.then { length in
+      //…
+  }</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">then</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">T</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>body</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure that is executed when this Promise is fulfilled.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise that is resolved with the value returned from the provided closure. For example:</p>
+
+<pre class="highlight plaintext"><code></code></pre>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise4thenurFT2onCSo13DispatchQueue7executeFzxGS0_qd____GS0_qd___"></a>
+                    <a name="//apple_ref/swift/Method/then(on:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise4thenurFT2onCSo13DispatchQueue7executeFzxGS0_qd____GS0_qd___">then(on:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The provided closure executes when this promise resolves.</p>
+
+<p>This variant of <code>then</code> allows chaining promises, the promise returned by the provided closure is resolved before the promise returned by this closure resolves.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter on: The queue to which the provided closure dispatches.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter execute: The closure that executes when this promise fulfills.
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>A new promise that resolves when the promise returned from the provided closure resolves. For example:</p>
+
+<p>URLSession.GET(url1).then { data in
+      return CLLocationManager.promise()
+  }.then { location in
+      //…
+  }</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">then</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">T</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>execute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure that executes when this promise fulfills.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise that resolves when the promise returned from the provided closure resolves. For example:</p>
+
+<pre class="highlight plaintext"><code></code></pre>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise5catchFT2onCSo13DispatchQueue6policyOSC11CatchPolicy7executeFPs5Error_T__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/catch(on:policy:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise5catchFT2onCSo13DispatchQueue6policyOSC11CatchPolicy7executeFPs5Error_T__GS0_x_">catch(on:policy:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The provided closure executes when this promise rejects.</p>
+
+<p>Rejecting a promise cascades: rejecting all subsequent promises (unless
+recover is invoked) thus you will typically place your catch at the end
+of a chain. Often utility promises will not have a catch, instead
+delegating the error handling to the caller.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter on: The queue to which the provided closure dispatches.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter policy: The default policy does not execute your handler for cancellation errors.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter execute: The handler to execute if this promise is rejected.
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <code>self</code>
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <a href="http://promisekit.org/docs/">Cancellation</a>
+
+</div>
+
+<div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    The promise that is returned is <code>self</code>. <code>catch</code> cannot affect the chain, in PromiseKit 3 no promise was returned to strongly imply this, however for PromiseKit 4 we started returning a promise so that you can <code>always</code> after a catch or return from a function that has an error handler.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="err">`</span><span class="k">catch</span><span class="err">`</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="nv">policy</span><span class="p">:</span> <span class="kt">CatchPolicy</span> <span class="o">=</span> <span class="o">.</span><span class="n">allErrorsExceptCancellation</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>policy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The default policy does not execute your handler for cancellation errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>execute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The handler to execute if this promise is rejected.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>self</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise7recoverFT2onCSo13DispatchQueue6policyOSC11CatchPolicy7executeFzPs5Error_GS0_x__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/recover(on:policy:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise7recoverFT2onCSo13DispatchQueue6policyOSC11CatchPolicy7executeFzPs5Error_GS0_x__GS0_x_">recover(on:policy:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The provided closure executes when this promise rejects.</p>
+
+<p>Unlike <code>catch</code>, <code>recover</code> continues the chain provided the closure does not throw. Use <code>recover</code> in circumstances where recovering the chain from certain errors is a possibility. For example:</p>
+
+<pre class="highlight plaintext"><code>CLLocationManager.promise().recover { error in
+    guard error == CLError.unknownLocation else { throw error }
+    return CLLocation.Chicago
+}
+</code></pre>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter on: The queue to which the provided closure dispatches.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter policy: The default policy does not execute your handler for cancellation errors.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter execute: The handler to execute if this promise is rejected.
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <a href="http://promisekit.org/docs/">Cancellation</a>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">recover</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="nv">policy</span><span class="p">:</span> <span class="kt">CatchPolicy</span> <span class="o">=</span> <span class="o">.</span><span class="n">allErrorsExceptCancellation</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>policy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The default policy does not execute your handler for cancellation errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>execute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The handler to execute if this promise is rejected.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise7recoverFT2onCSo13DispatchQueue6policyOSC11CatchPolicy7executeFzPs5Error_x_GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/recover(on:policy:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise7recoverFT2onCSo13DispatchQueue6policyOSC11CatchPolicy7executeFzPs5Error_x_GS0_x_">recover(on:policy:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The provided closure executes when this promise rejects.</p>
+
+<p>Unlike <code>catch</code>, <code>recover</code> continues the chain provided the closure does not throw. Use <code>recover</code> in circumstances where recovering the chain from certain errors is a possibility. For example:</p>
+
+<pre class="highlight plaintext"><code>CLLocationManager.promise().recover { error in
+    guard error == CLError.unknownLocation else { throw error }
+    return CLLocation.Chicago
+}
+</code></pre>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter on: The queue to which the provided closure dispatches.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter policy: The default policy does not execute your handler for cancellation errors.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter execute: The handler to execute if this promise is rejected.
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <a href="http://promisekit.org/docs/">Cancellation</a>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">recover</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="nv">policy</span><span class="p">:</span> <span class="kt">CatchPolicy</span> <span class="o">=</span> <span class="o">.</span><span class="n">allErrorsExceptCancellation</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>policy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The default policy does not execute your handler for cancellation errors.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>execute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The handler to execute if this promise is rejected.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise6alwaysFT2onCSo13DispatchQueue7executeFT_T__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/always(on:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise6alwaysFT2onCSo13DispatchQueue7executeFT_T__GS0_x_">always(on:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The provided closure executes when this promise resolves.</p>
+
+<pre class="highlight plaintext"><code>firstly {
+    UIApplication.shared.networkActivityIndicatorVisible = true
+}.then {
+    //…
+}.always {
+    UIApplication.shared.networkActivityIndicatorVisible = false
+}.catch {
+    //…
+}
+</code></pre>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter on: The queue to which the provided closure dispatches.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter execute: The closure that executes when this promise resolves.
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    A new promise, resolved with this promise’s resolution.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">always</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>execute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure that executes when this promise resolves.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise, resolved with this promise’s resolution.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise3tapFT2onCSo13DispatchQueue7executeFGOS_6Resultx_T__GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/tap(on:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise3tapFT2onCSo13DispatchQueue7executeFGOS_6Resultx_T__GS0_x_">tap(on:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Allows you to “tap” into a promise chain and inspect its result.</p>
+
+<p>The function you provide cannot mutate the chain.</p>
+
+<pre class="highlight plaintext"><code>URLSession.GET(/*…
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tap</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/Result.html">Result</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>execute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure that executes when this promise resolves.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise, resolved with this promise’s resolution.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise6asVoidFT_GS0_T__"></a>
+                    <a name="//apple_ref/swift/Method/asVoid()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise6asVoidFT_GS0_T__">asVoid()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Void promises are less prone to generics-of-doom scenarios.
+- SeeAlso: when.swift contains enlightening examples of using <code>Promise&lt;Void&gt;</code> to simplify your code.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">asVoid</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">Void</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise4thenFT2onCSo13DispatchQueue7executeFzxCS_10AnyPromise_GS0_GSqP___"></a>
+                    <a name="//apple_ref/swift/Method/then(on:execute:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise4thenFT2onCSo13DispatchQueue7executeFzxCS_10AnyPromise_GS0_GSqP___">then(on:execute:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The provided closure executes once this promise resolves.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter on: The queue on which the provided closure executes.
+
+</div>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter body: The closure that is executed when this promise fulfills.
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>A new promise that resolves when the <code><a href="../Classes/AnyPromise.html">AnyPromise</a></code> returned from the provided closure resolves. For example:</p>
+
+<p>URLSession.GET(url).then { (data: NSData) -&gt; AnyPromise in
+      //…
+      return SCNetworkReachability()
+  }.then { _ in
+      //…
+  }</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">then</span><span class="p">(</span><span class="n">on</span> <span class="nv">q</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="n">execute</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">T</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/AnyPromise.html">AnyPromise</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">?</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue on which the provided closure executes.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>body</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure that is executed when this promise fulfills.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise that resolves when the <code><a href="../Classes/AnyPromise.html">AnyPromise</a></code> returned from the provided closure resolves. For example:</p>
+
+<pre class="highlight plaintext"><code></code></pre>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10PromiseKit7Promise5errorGSqPs5Error__"></a>
+                    <a name="//apple_ref/swift/Property/error" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10PromiseKit7Promise5errorGSqPs5Error__">error</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    The error with which this promise was rejected; <code>nil</code> if this promise is not rejected.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The error with which this promise was rejected; <code>nil</code> if this promise is not rejected.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10PromiseKit7Promise9isPendingSb"></a>
+                    <a name="//apple_ref/swift/Property/isPending" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10PromiseKit7Promise9isPendingSb">isPending</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <code>true</code> if the promise has not yet resolved.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isPending</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the promise has not yet resolved.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10PromiseKit7Promise10isResolvedSb"></a>
+                    <a name="//apple_ref/swift/Property/isResolved" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10PromiseKit7Promise10isResolvedSb">isResolved</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <code>true</code> if the promise has resolved.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isResolved</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the promise has resolved.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10PromiseKit7Promise11isFulfilledSb"></a>
+                    <a name="//apple_ref/swift/Property/isFulfilled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10PromiseKit7Promise11isFulfilledSb">isFulfilled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <code>true</code> if the promise was fulfilled.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isFulfilled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the promise was fulfilled.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10PromiseKit7Promise10isRejectedSb"></a>
+                    <a name="//apple_ref/swift/Property/isRejected" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10PromiseKit7Promise10isRejectedSb">isRejected</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <code>true</code> if the promise was rejected.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isRejected</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the promise was rejected.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC10PromiseKit7Promise5valueGSqx_"></a>
+                    <a name="//apple_ref/swift/Property/value" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC10PromiseKit7Promise5valueGSqx_">value</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    The value with which this promise was fulfilled or <code>nil</code> if this promise is pending or rejected.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value with which this promise was fulfilled or <code>nil</code> if this promise is pending or rejected.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vPs23CustomStringConvertible11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vPs23CustomStringConvertible11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC10PromiseKit7Promise5jointFT_TGS0_x_GCS_8PMKJointx__"></a>
+                    <a name="//apple_ref/swift/Method/joint()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC10PromiseKit7Promise5jointFT_TGS0_x_GCS_8PMKJointx__">joint()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides a safe way to instantiate a <code>Promise</code> and resolve it later via its joint and another
+promise.</p>
+
+<pre class="highlight plaintext"><code>class Engine {
+   static func make() -&gt; Promise&lt;Engine&gt; {
+       let (enginePromise, joint) = Promise&lt;Engine&gt;.joint()
+       let cylinder: Cylinder = Cylinder(explodeAction: {
+
+           // We *could* use an IUO, but there are no guarantees about when
+           // this callback will be called. Having an actual promise is safe.
+
+           enginePromise.then { engine in
+               engine.checkOilPressure()
+           }
+       })
+
+       firstly {
+           Ignition.default.start()
+       }.then { plugs in
+           Engine(cylinders: [cylinder], sparkPlugs: plugs)
+       }.join(joint)
+
+       return enginePromise
+   }
+}
+</code></pre>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    A new promise and its joint.
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/Promise.html#/s:FC10PromiseKit7Promise4joinFGCS_8PMKJointx_T_">Promise.join(_:)</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">joint</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt"><a href="../Other Classes.html#/s:C10PromiseKit8PMKJoint">PMKJoint</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise and its joint.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC10PromiseKit7Promise4joinFGCS_8PMKJointx_T_"></a>
+                    <a name="//apple_ref/swift/Method/join(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC10PromiseKit7Promise4joinFGCS_8PMKJointx_T_">join(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pipes the value of this promise to the promise created with the joint.</p>
+
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter joint: The joint on which to join.
+
+</div>
+
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/Promise.html#/s:ZFC10PromiseKit7Promise5jointFT_TGS0_x_GCS_8PMKJointx__">Promise.joint()</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">join</span><span class="p">(</span><span class="n">_</span> <span class="nv">joint</span><span class="p">:</span> <span class="kt"><a href="../Other Classes.html#/s:C10PromiseKit8PMKJoint">PMKJoint</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>joint</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The joint on which to join.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Fe10PromiseKitRxs10CollectionrCS_7Promise3mapurFT2onCSo13DispatchQueue9transformFzWx8Iterator7Element_GS1_qd____GS1_GSaqd____"></a>
+                    <a name="//apple_ref/swift/Method/map(on:transform:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Fe10PromiseKitRxs10CollectionrCS_7Promise3mapurFT2onCSo13DispatchQueue9transformFzWx8Iterator7Element_GS1_qd____GS1_GSaqd____">map(on:transform:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Transforms a <code>Promise</code> where <code>T</code> is a <code>Collection</code> into a <code>Promise&lt;[U]&gt;</code></p>
+
+<pre class="highlight plaintext"><code>URLSession.shared.dataTask(url: /*…
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">map</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="nv">transform</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">T</span><span class="o">.</span><span class="kt">Iterator</span><span class="o">.</span><span class="kt">Element</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">U</span><span class="p">]</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>on</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to which the provided closure dispatches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transform</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure that executes when this promise resolves.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new promise, resolved with this promise’s resolution.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2016 <a class="link" href="http://mxcl.github.io" target="_blank" rel="external">Max Howell</a>. All rights reserved. (Last updated: 2016-12-02)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
