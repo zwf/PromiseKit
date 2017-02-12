@@ -37,6 +37,7 @@
 		63B0AC871D595E6300FA21D9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0AC691D595E6300FA21D9 /* Error.swift */; };
 		63B0AC8F1D595E6300FA21D9 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B0AC721D595E6300FA21D9 /* Promise.swift */; };
 		63B0AC931D595E6300FA21D9 /* PromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 63B0AC761D595E6300FA21D9 /* PromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63E015311E502F33002290CA /* Ambiguity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E015301E502F33002290CA /* Ambiguity.swift */; };
 		63E79EA51E16F86400D363A8 /* ExecutionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E79EA41E16F86400D363A8 /* ExecutionContext.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,8 @@
 		631751B61D59768200A9DDDC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		631F44391E381B640044C63C /* Sealant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sealant.swift; path = Sources/Sealant.swift; sourceTree = "<group>"; };
 		632714CD1E4D082D0043BBB2 /* Fundamentals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fundamentals.swift; path = Tests/CorePromise/Fundamentals.swift; sourceTree = "<group>"; };
+		63291DF71E5CEB3C00C81FDD /* PromiseKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = PromiseKit.podspec; sourceTree = "<group>"; };
+		63291DF81E5CEB6400C81FDD /* CHANGELOG.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.markdown; sourceTree = "<group>"; };
 		635893921D5BE4E000F14B55 /* PromiseKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PromiseKit.playground; sourceTree = "<group>"; };
 		635893931D5BE4F900F14B55 /* CHANGELOG.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.markdown; sourceTree = "<group>"; };
 		635893941D5BE4F900F14B55 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		63B0AC6C1D595E6300FA21D9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = "<group>"; };
 		63B0AC721D595E6300FA21D9 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
 		63B0AC761D595E6300FA21D9 /* PromiseKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PromiseKit.h; path = Sources/PromiseKit.h; sourceTree = "<group>"; };
+		63E015301E502F33002290CA /* Ambiguity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ambiguity.swift; path = Tests/CorePromise/Ambiguity.swift; sourceTree = "<group>"; };
 		63E79EA41E16F86400D363A8 /* ExecutionContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExecutionContext.swift; path = Sources/ExecutionContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +133,7 @@
 		6317518A1D59765700A9DDDC /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				63E015301E502F33002290CA /* Ambiguity.swift */,
 				6375053D1E4E1C8600DE318B /* Features.swift */,
 				637505401E4E2CA600DE318B /* Fundamentals.m */,
 				632714CD1E4D082D0043BBB2 /* Fundamentals.swift */,
@@ -186,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				635893971D5BE4F900F14B55 /* README.markdown */,
+				63291DF81E5CEB6400C81FDD /* CHANGELOG.markdown */,
+				63291DF71E5CEB3C00C81FDD /* PromiseKit.podspec */,
 				635893921D5BE4E000F14B55 /* PromiseKit.playground */,
 				63B0AC601D595E4C00FA21D9 /* Sources */,
 				63B0AC9E1D595E7E00FA21D9 /* Headers */,
@@ -349,6 +356,7 @@
 				630F21801E3FF68A00F6DB1E /* Infrastructure.swift in Sources */,
 				635D642B1D59635300BC0AF5 /* StressTests.swift in Sources */,
 				49A5584D1DC5185900E4D01B /* WrapTests.swift in Sources */,
+				63E015311E502F33002290CA /* Ambiguity.swift in Sources */,
 				637505411E4E2CA600DE318B /* Fundamentals.m in Sources */,
 				635D642C1D59635300BC0AF5 /* RegressionTests.swift in Sources */,
 			);
