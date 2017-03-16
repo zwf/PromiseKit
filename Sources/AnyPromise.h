@@ -25,13 +25,16 @@ typedef void (^PMKResolver)(id __nullable) NS_REFINED_FOR_SWIFT;
 
     __attribute__((objc_subclassing_restricted)) __attribute__((objc_runtime_name("AnyPromise")))
     @interface AnyPromise : NSObject
-    + (instancetype __nonnull)promiseWithResolverBlock:(void (^ __nonnull)(__nonnull PMKResolver))resolveBlock;
+    + (instancetype __nonnull)promiseWithResolverBlock:(void (^ __nonnull)(__nonnull PMKResolver))resolveBlock NS_REFINED_FOR_SWIFT;
     @end
 #endif
 
 
 
 @interface AnyPromise (ObjC)
+
+/// - See: Promise.swift
++ (instancetype __nonnull)promiseWithResolverBlock:(void (^ __nonnull)(__nonnull PMKResolver))resolveBlock;
 
 - (instancetype __nonnull)initWithResolver:(PMKResolver __strong __nonnull * __nonnull)resolver NS_REFINED_FOR_SWIFT;
 
