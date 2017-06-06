@@ -12,7 +12,7 @@ matrix:
         - docker-compose run PromiseKit
     - os: osx
       language: objective-c
-      osx_image: xcode8
+      osx_image: xcode9
       env:
         - PLATFORM=Mac
         - PLATFORM=iOS NAME='iPhone SE'
