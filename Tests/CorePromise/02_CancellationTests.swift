@@ -15,7 +15,7 @@ class CancellationTests: XCTestCase {
 
             after(interval: 0).then { _ in
                 throw Error.cancel
-            }.then {
+            }.then { _ in
                 XCTFail()
             }.catch { _ in
                 XCTFail()
@@ -28,9 +28,9 @@ class CancellationTests: XCTestCase {
     func testThrowCancellableErrorThatIsNotCancelled() {
         let expct = expectation(description: "")
 
-        after(interval: 0).then {
+        after(interval: 0).then { _ in
             throw Error.dummy
-        }.then {
+        }.then { _ in
             XCTFail()
         }.catch { _ in
             expct.fulfill()
@@ -55,7 +55,7 @@ class CancellationTests: XCTestCase {
                 ex1.fulfill()
                 XCTAssertTrue(err.isCancelledError)
                 throw err
-            }.then {
+            }.then { _ in
                 XCTFail()
             }.catch { _ in
                 XCTFail()
@@ -85,7 +85,7 @@ class CancellationTests: XCTestCase {
             ex.fulfill()
         }
 
-        Promise(value: ()).then {
+        Promise(value: ()).then { _ in
             throw NSError(domain: NSURLErrorDomain, code: URLError.cancelled.rawValue)
         }.catch { _ in
             XCTFail()
@@ -102,7 +102,7 @@ class CancellationTests: XCTestCase {
             ex.fulfill()
         }
 
-        Promise(value: ()).then {
+        Promise(value: ()).then { _ in
             throw NSError(domain: NSURLErrorDomain, code: NSURLErrorCancelled, userInfo: [:])
         }.catch { _ in
             XCTFail()
@@ -119,7 +119,7 @@ class CancellationTests: XCTestCase {
             ex.fulfill()
         }
 
-        Promise(value: ()).then {
+        Promise(value: ()).then { _ in
             throw Error.cancel as NSError
         }.catch { _ in
             XCTFail()

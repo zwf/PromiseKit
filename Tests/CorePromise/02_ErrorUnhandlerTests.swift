@@ -120,7 +120,7 @@ class ErrorUnhandlerTests: XCTestCase {
         }
 
         Promise<Void> { _, reject in
-            after(interval: 0.1).then {
+            after(interval: 0.1).then { _ in
                 throw Error.test
             }.catch(execute: reject)
         }

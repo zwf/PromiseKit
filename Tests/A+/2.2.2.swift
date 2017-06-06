@@ -22,11 +22,11 @@ class Test222: XCTestCase {
                     }
                     after(ticks: 5) {
                         XCTAssertFalse(called)
-                        d.fulfill()
+                        d.fulfill(Void())
                     }
                 }
                 specify("never fulfilled") { d, expectation in
-                    d.promise.then{ XCTFail() }
+                    d.promise.then{ _ in XCTFail() }
                     after(ticks: 1000, execute: expectation.fulfill)
                 }
             }
@@ -34,7 +34,7 @@ class Test222: XCTestCase {
             describe("2.2.2.3: it must not be called more than once.") {
                 specify("already-fulfilled") { _, expectation in
                     let ex = (expectation, mkex())
-                    Promise(value: ()).then {
+                    Promise(value: ()).then { _ in
                         ex.0.fulfill()
                     }
                     after(ticks: 1000) {
@@ -42,23 +42,23 @@ class Test222: XCTestCase {
                     }
                 }
                 specify("trying to fulfill a pending promise more than once, immediately") { d, expectation in
-                    d.promise.then(execute: expectation.fulfill)
-                    d.fulfill()
-                    d.fulfill()
+                    d.promise.then{ _ in expectation.fulfill() }
+                    d.fulfill(Void())
+                    d.fulfill(Void())
                 }
                 specify("trying to fulfill a pending promise more than once, delayed") { d, expectation in
-                    d.promise.then(execute: expectation.fulfill)
+                    d.promise.then{ _ in expectation.fulfill() }
                     after(ticks: 5) {
-                        d.fulfill()
-                        d.fulfill()
+                        d.fulfill(Void())
+                        d.fulfill(Void())
                     }
                 }
                 specify("trying to fulfill a pending promise more than once, immediately then delayed") { d, expectation in
                     let ex = (expectation, mkex())
-                    d.promise.then(execute: ex.0.fulfill)
-                    d.fulfill()
+                    d.promise.then{ _ in ex.0.fulfill() }
+                    d.fulfill(Void())
                     after(ticks: 5) {
-                        d.fulfill()
+                        d.fulfill(Void())
                     }
                     after(ticks: 10, execute: ex.1.fulfill)
                 }
@@ -66,25 +66,25 @@ class Test222: XCTestCase {
                     var ex = (expectation, self.expectation(description: ""), self.expectation(description: ""), self.expectation(description: ""))
 
                     do {
-                        d.promise.then(execute: ex.0.fulfill)
+                        d.promise.then{ _ in ex.0.fulfill() }
                     }
                     after(ticks: 5) {
-                        d.promise.then(execute: ex.1.fulfill)
+                        d.promise.then{ _ in ex.1.fulfill() }
                     }
                     after(ticks: 10) {
-                        d.promise.then(execute: ex.2.fulfill)
+                        d.promise.then{ _ in ex.2.fulfill() }
                     }
                     after(ticks: 15) {
-                        d.fulfill()
+                        d.fulfill(Void())
                         ex.3.fulfill()
                     }
                 }
                 specify("when `then` is interleaved with fulfillment") { d, expectation in
                     var ex = (expectation, self.expectation(description: ""), self)
 
-                    d.promise.then(execute: ex.0.fulfill)
-                    d.fulfill()
-                    d.promise.then(execute: ex.1.fulfill)
+                    d.promise.then{ _ in ex.0.fulfill() }
+                    d.fulfill(Void())
+                    d.promise.then{ _ in ex.1.fulfill() }
                 }
             }
         }

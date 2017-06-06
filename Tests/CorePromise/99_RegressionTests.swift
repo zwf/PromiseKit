@@ -9,7 +9,7 @@ class RegressionTests: XCTestCase {
 
         do {
             let promise1 = Promise(value: ())
-            let promise2 = promise1.then(on: zalgo) { promise1 }
+            let promise2 = promise1.then(on: zalgo) { _ in promise1 }
             promise2.catch(on: zalgo) { _ in XCTFail() }
         }
         do {

@@ -4,7 +4,7 @@ import XCTest
 class AfterTests: XCTestCase {
     func testZero() {
         let ex1 = expectation(description: "")
-        after(interval: 0).then(execute: ex1.fulfill)
+        after(interval: 0).then{ _ in ex1.fulfill() }
         waitForExpectations(timeout: 2, handler: nil)
 
         let ex2 = expectation(description: "")
@@ -14,7 +14,7 @@ class AfterTests: XCTestCase {
 
     func testNegative() {
         let ex1 = expectation(description: "")
-        after(interval: -1).then(execute: ex1.fulfill)
+        after(interval: -1).then{ _ in ex1.fulfill() }
         waitForExpectations(timeout: 2, handler: nil)
 
         let ex2 = expectation(description: "")
@@ -24,7 +24,7 @@ class AfterTests: XCTestCase {
 
     func testPositive() {
         let ex1 = expectation(description: "")
-        after(interval: 1).then(execute: ex1.fulfill)
+        after(interval: 1).then{ _ in ex1.fulfill() }
         waitForExpectations(timeout: 2, handler: nil)
 
         let ex2 = expectation(description: "")

@@ -30,7 +30,7 @@ class JointTests: XCTestCase {
         let ex = expectation(description: "")
 
         let (promise, joint) = Promise<Void>.joint()
-        promise.then { ex.fulfill() }
+        promise.then { _ in ex.fulfill() }
 
         Promise(value: ()).join(joint)
 
@@ -41,12 +41,12 @@ class JointTests: XCTestCase {
         let ex = expectation(description: "")
 
         let (promise, joint) = Promise<Void>.joint()
-        promise.then { ex.fulfill() }
+        promise.then { _ in ex.fulfill() }
 
         let (foo, fulfillFoo, _) = Promise<Void>.pending()
         foo.join(joint)
 
-        fulfillFoo()
+        fulfillFoo(())
 
         waitForExpectations(timeout: 1)
     }
