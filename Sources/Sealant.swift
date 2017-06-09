@@ -102,3 +102,14 @@ public func adapter<T, U>(_ seal: Sealant<(T, U)>) -> (T?, U?, Error?) -> Void {
         }
     }
 }
+
+
+extension Sealant where T == Void {
+    func resolve(error: Error?) {
+        if let error = error {
+            reject(error)
+        } else {
+            fulfill()
+        }
+    }
+}

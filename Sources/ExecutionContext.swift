@@ -14,7 +14,7 @@ extension DispatchQueue: ExecutionContext {
 
 extension DispatchQoS: ExecutionContext {
     public func pmkAsync(execute body: @escaping () -> Void) {
-        DispatchQueue.global().async(group: nil, qos: self, flags: [], execute: body)
+        DispatchQueue.global(qos: qosClass).async(group: nil, qos: self, flags: [], execute: body)
     }
 }
 

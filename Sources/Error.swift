@@ -1,3 +1,5 @@
+import Foundation
+
 public enum PMKError: Error {
     /**
      The completionHandler with form (T?, ErrorType?) was called with (nil, nil)
@@ -42,13 +44,6 @@ extension PMKError: CustomStringConvertible {
 public enum CatchPolicy: Int {
     case allErrors
     case allErrorsExceptCancellation
-}
-
-extension NSError {
-    @objc(pmk_cancelledError)
-    public static var cancelledError: NSError {
-        return PMKError.cancelled as NSError
-    }
 }
 
 extension Error {

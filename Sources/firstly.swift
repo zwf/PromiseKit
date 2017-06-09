@@ -28,3 +28,32 @@ public func firstly<U: Thenable>(execute body: () throws -> U) -> Promise<U.T> {
         return Promise(error: error)
     }
 }
+
+/**
+ Useful for starting chains without promises:
+
+     let promise: Promise<Void>
+     do {
+         promise = Promise(try foo())
+     } catch {
+         promise = Promise(error: error)
+     }
+     promise.then {
+         //…
+     }
+
+ With:
+
+     firstly {
+         try foo()
+     }.then {
+         //…
+     }
+ */
+public func firstly<T>(execute body: () throws -> T) -> Promise<T> {
+    do {
+        return Promise(try body())
+    } catch {
+        return Promise(error: error)
+    }
+}

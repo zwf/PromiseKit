@@ -1,3 +1,5 @@
+import Dispatch
+
 @available(*, deprecated: 4.0)
 public enum ErrorPolicy {
     case AllErrorsExceptCancellation

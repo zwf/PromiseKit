@@ -27,7 +27,7 @@ public enum Result<T> {
     case rejected(Error)
     case fulfilled(T)
 
-    public    var value: T? {
+    public var value: T? {
         switch self {
         case .fulfilled(let value):
             return value
@@ -147,7 +147,12 @@ public final class Promise<T>: Thenable, Catchable, Mixin {
         _schrödinger = cat
     }
 
-    public convenience init(seal body: (Sealant<T>) throws -> Void) {
+    /**
+      - Remark: This initializer requires the `.start` parameter because otherwise Swift
+        will in various circumstances instead create a new `Promise<T -> Void>` via the
+        other initializer rather than do this…
+    */
+    public convenience init(_: UnambiguousInitializer, seal body: (Sealant<T>) throws -> Void) {
         do {
             self.init(.pending)
             let sealant = Sealant{ self.schrödinger = .resolved($0) }
@@ -158,7 +163,7 @@ public final class Promise<T>: Thenable, Catchable, Mixin {
     }
 
     public convenience init(_: UnambiguousInitializer, assimilate body: () throws -> Promise) {
-        self.init{ try body().pipe(to: $0.resolve) }
+        self.init(.start) { try body().pipe(to: $0.resolve) }
     }
 
     /// - Note: `Promise()` thus creates a *fulfilled* `Void` promise.
@@ -189,10 +194,6 @@ public final class Promise<T>: Thenable, Catchable, Mixin {
         let promise = Promise(.pending)
         let sealant = Sealant{ promise.schrödinger = .resolved($0) }
         return (promise, sealant)
-    }
-
-    public func asVoid() -> Promise<Void> {
-        return then{ _ in }
     }
 }
 
@@ -240,12 +241,42 @@ extension Thenable {
         }
         return promise
     }
+
+    /**
+     Allows you to validate properties of the current value. The promise you
+     return will fail the chain if it is rejected. Otherwise the input value
+     is returned to the chain.
+     */
+    public func validate(on: ExecutionContext? = NextMainRunloopContext(), _ body: @escaping (T) -> Promise<Void>) -> Promise<T> {
+        let promise = Promise<T>(.pending)
+        pipe { result in
+            switch result {
+            case .fulfilled(let value):
+                body(value).pipe { result in
+                    switch result {
+                    case .rejected(let error):
+                        promise.schrödinger = .resolved(.rejected(error))
+                    case .fulfilled:
+                        promise.schrödinger = .resolved(.fulfilled(value))
+                    }
+                }
+            case .rejected(let error):
+                promise.schrödinger = .resolved(.rejected(error))
+            }
+        }
+        return promise
+    }
+    
+    public func asVoid() -> Promise<Void> {
+        //TODO zalgo this
+        return then{ _ in }
+    }
 }
 
 extension Catchable {
-    public func ensure(on: ExecutionContext = NextMainRunloopContext(), that body: @escaping () -> Void) -> Self {
+    public func ensure(on: ExecutionContext? = NextMainRunloopContext(), that body: @escaping () -> Void) -> Self {
         pipe { _ in
-            on.pmkAsync(execute: body)
+            go(on, body)
         }
         return self
     }
@@ -256,7 +287,7 @@ extension Catchable {
         pipe { result in
             switch result {
             case .fulfilled:
-                break
+                finally.schrödinger = .resolved()
             case .rejected(let error):
                 if policy == .allErrorsExceptCancellation, error.isCancelled {
                     pmkWarn("PromiseKit: warning: a catch handler did not execute because the error was deemend a cancellation error")
@@ -264,9 +295,15 @@ extension Catchable {
                 }
                 on.pmkAsync {
                     body(error)
+                    // must occur after `catch`
+                    // generally we don't have such guards in this file because
+                    // a promise must resolve before the next such block runs,
+                    // but here the two schrodingers are both tied to the same
+                    // previous state and if they run on different queues they
+                    // will likely run simultaneously: not exactly “finally”
+                    finally.schrödinger = .resolved()
                 }
             }
-            finally.schrödinger = .resolved()
         }
         return finally
     }
@@ -384,14 +421,27 @@ public final class ChainFinalizer {  //TODO thread-safety!
     }
 
     @discardableResult
-    public func finally(_ body: @escaping () -> Void) -> ChainFinalizer {
+    public func finally(on: ExecutionContext? = NextMainRunloopContext(), _ body: @escaping () -> Void) -> ChainFinalizer {
+        func doit() { go(on, body) }
         switch schrödinger {
         case .pending(let handlers):
-            handlers.bodies.append(body)
+            handlers.bodies.append(doit)
         case .resolved:
-            body()
+            doit()
         }
         return self
+    }
+
+    /**
+     Blocks this thread, so you know, don’t call this on a serial thread that
+     any part of your chain may use. Like the main thread for example.
+     */
+    public func wait() {
+        //let semaphore = DispatchSemaphore(value: 0)
+//        _ = finally {
+//            semaphore.signal()
+//        }
+//        semaphore.wait(timeout: DispatchTime(uptimeNanoseconds: UINT64_MAX))
     }
 }
 
@@ -481,7 +531,8 @@ public final class Guarantee<T>: Thenable, Mixin {
         _schrödinger = .resolved(value)
     }
 
-    public init(sealant body: (@escaping (T) -> Void) -> Void) {
+    /// - Remark: `enum` prefix required for same reasons as for `Promise`
+    public init(_: UnambiguousInitializer, sealant body: (@escaping (T) -> Void) -> Void) {
         _schrödinger = .pending(Handlers())
         body { self.schrödinger = .resolved($0) }
     }
@@ -652,6 +703,7 @@ public func when<U, V, X, Y, Z>(fulfilled u: Promise<U>, _ v: Promise<V>, _ x: P
 
 /// - Remark: There is no `...` variant, because it is then confusing that you put a splat in and don't get a splat out, when compared with the typical usage for our above splatted kinds
 public func when<U: Thenable>(fulfilled thenables: [U]) -> Promise<[U.T]> {
+    let barrier = DispatchQueue(label: "org.promisekit.when")
     let rv = Promise<[U.T]>(.pending)
     var values = Array<U.T!>(repeating: nil, count: thenables.count)
     var x = thenables.count
@@ -662,9 +714,13 @@ public func when<U: Thenable>(fulfilled thenables: [U]) -> Promise<[U.T]> {
             case .rejected(let error):
                 rv.schrödinger = .resolved(.rejected(error))
             case .fulfilled(let value):
-                values[index] = value
-                x -= 1
-                if x == 0 {
+                var done = false
+                barrier.sync(flags: .barrier) {
+                    values[index] = value
+                    x -= 1
+                    done = x == 0
+                }
+                if done {
                     rv.schrödinger = .resolved(.fulfilled(values))
                 }
             }
@@ -800,16 +856,18 @@ extension Thenable where T: Sequence {
      - Returns: A new promise, resolved with this promise’s resolution.
      - TODO: allow concurrency
      */
-    public final func map<U>(on: ExecutionContext = NextMainRunloopContext(), transform: @escaping (T.Iterator.Element) throws -> Promise<U>) -> Promise<[U]> {
-        return then(on: on){ when(fulfilled: try $0.map(transform)) }
+    public func map<U>(on: ExecutionContext? = NextMainRunloopContext(), transform: @escaping (T.Iterator.Element) throws -> Promise<U>) -> Promise<[U]> {
+        return then(on: on) {
+            return when(fulfilled: try $0.map(transform))
+        }
     }
 
-    public final func map<U>(on: ExecutionContext = NextMainRunloopContext(), transform: @escaping (T.Iterator.Element) throws -> U) -> Promise<[U]> {
+    public func map<U>(on: ExecutionContext? = NextMainRunloopContext(), transform: @escaping (T.Iterator.Element) throws -> U) -> Promise<[U]> {
         return then(on: on){ try $0.map(transform) }
     }
 
     /// `nil` rejects the resulting promise with `PMKError.flatMap`
-    public func flatMap<U>(on: ExecutionContext = NextMainRunloopContext(), _ transform: @escaping (T.Iterator.Element) -> U?) -> Promise<[U]> {
+    public func flatMap<U>(on: ExecutionContext? = NextMainRunloopContext(), _ transform: @escaping (T.Iterator.Element) -> U?) -> Promise<[U]> {
         return then(on: on) { values in
             return try values.map { value in
                 guard let result = transform(value) else {
@@ -823,14 +881,27 @@ extension Thenable where T: Sequence {
     public var first: Promise<T.Iterator.Element> {
         return flatMap{ $0.first(where: { _ in true }) }
     }
+
+    public func filter(on: ExecutionContext? = NextMainRunloopContext(), test: @escaping (T.Iterator.Element) -> Bool) -> Promise<[T.Iterator.Element]> {
+        return then(on: on) {
+            return $0.filter(test)
+        }
+    }
 }
 
 extension Thenable where T: Collection {
     public var last: Promise<T.Iterator.Element> {
         return flatMap{ (t: T) -> T.Iterator.Element? in
             guard !t.isEmpty else { return nil }
-            return t[t.endIndex]
+            let i = t.index(t.endIndex, offsetBy: -1)
+            return t[i]
         }
+    }
+}
+
+extension Thenable where T: Sequence, T.Iterator.Element: Comparable {
+    public func sorted(on: ExecutionContext? = NextMainRunloopContext()) -> Promise<[T.Iterator.Element]> {
+        return then(on: on){ $0.sorted() }
     }
 }
 
