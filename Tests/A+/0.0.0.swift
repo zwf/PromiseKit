@@ -56,7 +56,7 @@ extension XCTestCase {
         let specify = mkspecify(withExpectationCount, file: file, line: line, body: body)
 
         specify("already-fulfilled") { value in
-            return (Promise(value), {})
+            return (Promise(value: value), {})
         }
         specify("immediately-fulfilled") { value in
             let (promise, pipe) = Promise<UInt32>.pending()

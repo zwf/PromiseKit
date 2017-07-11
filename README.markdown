@@ -191,10 +191,11 @@ We do **not** usually backport fixes to these branches, but pull-requests are we
 
 Promises are only as useful as the asynchronous tasks they represent, thus we 
 have converted (almost) all of Apple’s APIs to Promises. The default CocoaPod
-comes with promises UIKit and Foundation, the rest are accessed by specifying
-additional subspecs in your `Podfile`, eg:
+comes with no extensions, to use them specify additional subspecs in your
+`Podfile`, eg:
 
 ```ruby
+pod "PromiseKit/Foundatiopn"   # URLSession.shared.dataTask(.promise).then { /*…*/ }
 pod "PromiseKit/MapKit"        # MKDirections().promise().then { /*…*/ }
 pod "PromiseKit/CoreLocation"  # CLLocationManager.promise().then { /*…*/ }
 ```

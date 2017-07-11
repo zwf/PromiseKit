@@ -94,7 +94,7 @@ public struct Sealant<T> {
 public func adapter<T, U>(_ seal: Sealant<(T, U)>) -> (T?, U?, Error?) -> Void {
     return { t, u, e in
         if let t = t, let u = u {
-            seal.fulfill(t, u)
+            seal.fulfill((t, u))
         } else if let e = e {
             seal.reject(e)
         } else {
@@ -109,7 +109,7 @@ extension Sealant where T == Void {
         if let error = error {
             reject(error)
         } else {
-            fulfill()
+            fulfill(())
         }
     }
 }

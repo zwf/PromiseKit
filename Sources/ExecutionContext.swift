@@ -76,7 +76,7 @@ public class NextMainRunloopContext: ExecutionContext {
         }
     }
 
-    init() {
+    public init() {
         var ctx: Context!
         barrier.sync(flags: .barrier) {
             ctx = activeContext ?? Context()
@@ -97,5 +97,18 @@ public class NextMainRunloopContext: ExecutionContext {
             // when the next main runloop iteration occurs
             DispatchQueue.main.async(execute: body)
         }
+    }
+}
+
+
+
+
+@inline(__always)
+func go(_ exectx: ExecutionContext?, _ body: @escaping () -> Void) {
+    switch exectx {
+    case .some(let exectx):
+        exectx.pmkAsync(execute: body)
+    case .none:
+        body()
     }
 }
