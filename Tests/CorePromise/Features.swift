@@ -84,3 +84,12 @@ class FeatureRaceTests: XCTestCase {
         }
     }
 }
+
+class FeatureWhenTests: XCTestCase {
+    func testEmpty() {
+        wait { ex in
+            let input = Array<Promise<Int>>()
+            when(fulfilled: input).then{ _ in ex.fulfill() }
+        }
+    }
+}

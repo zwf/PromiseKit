@@ -18,6 +18,11 @@ public func when<U, V, X, Y, Z>(fulfilled u: Promise<U>, _ v: Promise<V>, _ x: P
 
 /// - Remark: There is no `...` variant, because it is then confusing that you put a splat in and don't get a splat out, when compared with the typical usage for our above splatted kinds
 public func when<U: Thenable>(fulfilled thenables: [U]) -> Promise<[U.T]> {
+
+    guard !thenables.isEmpty else {
+        return Promise(value: [])
+    }
+
     let barrier = DispatchQueue(label: "org.promisekit.when")
     let rv = Promise<[U.T]>(.pending)
     var values = Array<U.T!>(repeating: nil, count: thenables.count)
