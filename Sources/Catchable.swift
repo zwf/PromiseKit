@@ -1,3 +1,5 @@
+import Dispatch
+
 public protocol Catchable: Thenable
 {}
 
@@ -159,17 +161,5 @@ public final class ChainFinalizer {  //TODO thread-safety!
             doit()
         }
         return self
-    }
-
-    /**
-     Blocks this thread, so you know, don’t call this on a serial thread that
-     any part of your chain may use. Like the main thread for example.
-     */
-    public func wait() {
-        //let semaphore = DispatchSemaphore(value: 0)
-        //        _ = finally {
-        //            semaphore.signal()
-        //        }
-        //        semaphore.wait(timeout: DispatchTime(uptimeNanoseconds: UINT64_MAX))
     }
 }

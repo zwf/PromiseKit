@@ -13,7 +13,11 @@ public enum PMKError: Error {
      */
     case returnedSelf
 
-    /// Either `when(fulfilled:concurrently)` or `race()` was called with an empty array as input.
+    /**
+      One of:
+      1. `when(fulfilled:concurrently)` or `race()` was called with an empty array as input.
+      2. `first` or `last` were called with an empty array
+     */
     case badInput
 
     /// `Promise.flatMap(_:)` failed to transform `$0` to `$1`
@@ -57,3 +61,11 @@ extension Error {
         }
     }
 }
+
+#if !SWIFT_PACKAGE
+extension NSError {
+    @objc static func pmk_cancelledError() -> NSError {
+        return PMKError.cancelled as NSError
+    }
+}
+#endif

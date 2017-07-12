@@ -1,4 +1,4 @@
-
+import Dispatch
 
 /**
  A *promise* represents the future value of a (usually) asynchronous task.
@@ -42,7 +42,7 @@ public final class Promise<T>: Thenable, Catchable, Mixin {
         }
     }
 
-#if swift(>=4.0)  // otherwise causes ambiguity
+#if swift(>=4.0)  // causes ambiguity in Swift 3
     public convenience init(assimilate body: () throws -> Promise) {
         self.init { try body().pipe(to: $0.resolve) }
     }
@@ -76,36 +76,6 @@ public final class Promise<T>: Thenable, Catchable, Mixin {
         let promise = Promise(.pending)
         let sealant = Sealant{ promise.schrödinger = .resolved($0) }
         return (promise, sealant)
-    }
-}
-
-extension Promise {
-    func then<U, V>(execute body: @escaping (T) -> (Promise<U>, Promise<V>)) -> Promise<(U,V)> {
-        let promise = Promise<(U, V)>(.pending)
-        pipe { result in
-            switch result {
-            case .fulfilled(let value):
-                let (u, v) = body(value)
-                when(fulfilled: u, v).pipe{ promise.schrödinger = .resolved($0) }
-            case .rejected(let error):
-                promise.schrödinger = .resolved(.rejected(error))
-            }
-        }
-        return promise
-    }
-
-    func then<U, V, X>(execute body: @escaping (T) -> (Promise<U>, Promise<V>, Promise<X>)) -> Promise<(U,V,X)> {
-        let promise = Promise<(U, V, X)>(.pending)
-        pipe { result in
-            switch result {
-            case .fulfilled(let value):
-                let (u, v, x) = body(value)
-                when(fulfilled: u, v, x).pipe{ promise.schrödinger = .resolved($0) }
-            case .rejected(let error):
-                promise.schrödinger = .resolved(.rejected(error))
-            }
-        }
-        return promise
     }
 }
 

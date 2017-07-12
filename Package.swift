@@ -1,6 +1,6 @@
 import PackageDescription
 
-let package = Package(
+let pkg = Package(
     name: "PromiseKit",
     exclude: [
         "Sources/AnyPromise.swift",
@@ -20,3 +20,5 @@ let package = Package(
         "Tests"
     ]
 )
+
+pkg.swiftLanguageVersions = [3,4]

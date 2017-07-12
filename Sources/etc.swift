@@ -1,3 +1,4 @@
+import Dispatch
 
 // Caveats (specify fixes alongside)
 // * Promise { throw E.dummy } is interpreted as `Promise<() throws -> Void>` of all things
@@ -28,10 +29,6 @@ public enum Result<T> {
 
 class Handlers<R> {
     var bodies: [(R) -> Void] = []
-}
-
-public enum UnambiguousInitializer {
-    case start
 }
 
 /**

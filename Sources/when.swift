@@ -1,4 +1,4 @@
-
+import Dispatch
 
 public func when<U, V>(fulfilled u: Promise<U>, _ v: Promise<V>) -> Promise<(U, V)> {
     return when(fulfilled: [u.asVoid(), v.asVoid()]).then{ _ in (u.value!, v.value!) }

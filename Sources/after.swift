@@ -17,3 +17,20 @@ public func after(_ interval: DispatchTimeInterval) -> Guarantee<Void> {
   #endif
     return guarantee
 }
+
+/**
+     after(seconds: 2.1).then {
+         //…
+     }
+
+ - Returns: A `Guarantee` that resolves after the specified duration.
+*/
+public func after(seconds: TimeInterval) -> Guarantee<Void> {
+    let (guarantee, seal) = Guarantee<Void>.pending()
+    #if swift(>=4.0)
+        DispatchQueue.global().asyncAfter(deadline: .now() + seconds) { seal(()) }
+    #else
+        DispatchQueue.global().asyncAfter(deadline: .now() + seconds, execute: seal)
+    #endif
+    return guarantee
+}

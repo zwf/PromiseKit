@@ -1,4 +1,4 @@
-
+import Dispatch
 
 /** - Remark: much like a real-life guarantee, it is only as reliable as the source; “promises”
  may never resolve, it is up to the thing providing you the promise to ensure that they do.
@@ -11,13 +11,12 @@ public final class Guarantee<T>: Thenable, Mixin {
     let barrier = DispatchQueue(label: "org.promisekit.barrier", attributes: .concurrent)
     var _schrödinger: Schrödinger<T>
 
-    /// - Remark: `Guarantee()` thus creates a resolved `Void` Guarantee.
-    public init(_ value: T) {
+    /// - See: `Guarantee()` for a resolved `Void` Guarantee.
+    public init(value: T) {
         _schrödinger = .resolved(value)
     }
 
-    /// - Remark: `enum` prefix required for same reasons as for `Promise`
-    public init(_: UnambiguousInitializer, sealant body: (@escaping (T) -> Void) -> Void) {
+    public init(sealant body: (@escaping (T) -> Void) -> Void) {
         _schrödinger = .pending(Handlers())
         body { self.schrödinger = .resolved($0) }
     }
