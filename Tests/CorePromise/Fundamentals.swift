@@ -23,7 +23,7 @@ class Fundamentals: XCTestCase {
     func test2a() {
         wait { ex in
             // then is called on main thread
-            Promise().then {
+            Promise().done {
                 XCTAssert(Thread.isMainThread)
                 ex.fulfill()
             }
@@ -66,16 +66,16 @@ class Fundamentals: XCTestCase {
             var foo = false
 
             let p = Promise()
-            p.then {
+            p.done {
                 XCTAssertFalse(foo)
                 DispatchQueue.main.async { foo = true }
                 XCTAssertFalse(foo)
-            }.then {
+            }.done {
                 XCTAssertFalse(foo)
-            }.then {
+            }.done {
                 XCTAssertFalse(foo)
 
-                p.then {
+                p.done {
                     XCTAssertTrue(foo)
                     ex.fulfill()
                 }

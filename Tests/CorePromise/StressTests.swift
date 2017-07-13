@@ -7,7 +7,7 @@ class StressTests: XCTestCase {
 
         //will crash if then doesn't protect handlers
         stressDataRace(expectation: e1, stressFunction: { promise in
-            promise.then { s in
+            promise.done { s in
                 XCTAssertEqual("ok", s)
                 return
             }
@@ -28,7 +28,7 @@ class StressTests: XCTestCase {
                 return DispatchQueue.global().promise { x }
             }
         }
-        promise.then { x in
+        promise.done { x in
             values.append(x)
             XCTAssertEqual(values, (0..<N).map{ $0 })
             ex.fulfill()
@@ -41,7 +41,7 @@ class StressTests: XCTestCase {
 
         //will crash if zalgo doesn't protect handlers
         stressDataRace(expectation: e1, stressFunction: { promise in
-            promise.then(on: nil) { s in
+            promise.done(on: nil) { s in
                 XCTAssertEqual("ok", s)
                 return
             }

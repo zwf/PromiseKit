@@ -12,7 +12,7 @@ class RegressionTests: XCTestCase {
         wait { ex in
             let promise1 = Promise()
             let promise2 = promise1.then{ promise1 }
-            promise2.then(execute: ex.fulfill)
+            promise2.done(execute: ex.fulfill)
         }
 
         wait { ex in

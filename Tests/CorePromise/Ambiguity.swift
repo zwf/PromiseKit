@@ -40,7 +40,6 @@ class AmbiguityTests: XCTestCase {
             func foo() -> Promise<Int> {
                 let bar = Promise(value: 3)
                 return firstly {
-                    print("hi")
                     return bar
                 }
             }
@@ -50,9 +49,8 @@ class AmbiguityTests: XCTestCase {
 
         do {
             firstly {
-                print("hi")
                 return Promise(value: 3)
-            }.then {
+            }.done {
                 XCTAssertEqual($0, 3)
             }
         }
@@ -60,9 +58,22 @@ class AmbiguityTests: XCTestCase {
         do {
             firstly {
                 Promise(value: 3)
-            }.then {
+            }.done {
                 XCTAssertEqual($0, 3)
             }
         }
+
+        do {
+            firstly {
+                Guarantee(value: 3)
+            }.done {
+                XCTAssertEqual($0, 3)
+            }
+        }
+    }
+
+    func test3() {
+        let p = after(.milliseconds(10)).then{ Promise(value: 1) }
+        XCTAssert(p is Promise<Int>, "\(p)")
     }
 }

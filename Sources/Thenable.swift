@@ -29,7 +29,8 @@ public extension Thenable {
         return promise
     }
 
-    func then<U>(on: ExecutionContext? = NextMainRunloopContext(), execute body: @escaping (T) throws -> U) -> Promise<U> {
+    /// -Remark: not `then` due to Swift ambiguity
+    func map<U>(on: ExecutionContext? = NextMainRunloopContext(), execute body: @escaping (T) throws -> U) -> Promise<U> {
         let promise = Promise<U>(.pending)
         pipe { result in
             switch result {
@@ -51,34 +52,14 @@ public extension Thenable {
         return promise
     }
 
-    /**
-     Allows you to validate properties of the current value. The promise you
-     return will fail the chain if it is rejected. Otherwise the input value
-     is returned to the chain.
-     */
-    func validate(on: ExecutionContext? = NextMainRunloopContext(), _ body: @escaping (T) -> Promise<Void>) -> Promise<T> {
-        let promise = Promise<T>(.pending)
-        pipe { result in
-            switch result {
-            case .fulfilled(let value):
-                body(value).pipe { result in
-                    switch result {
-                    case .rejected(let error):
-                        promise.schrödinger = .resolved(.rejected(error))
-                    case .fulfilled:
-                        promise.schrödinger = .resolved(.fulfilled(value))
-                    }
-                }
-            case .rejected(let error):
-                promise.schrödinger = .resolved(.rejected(error))
-            }
-        }
-        return promise
+    /// -Remark: not `then` due to Swift ambiguity
+    func done(on: ExecutionContext? = NextMainRunloopContext(), execute body: @escaping (T) throws -> Void) -> Promise<Void> {
+        return map(on: on, execute: body)
     }
 
     func asVoid() -> Promise<Void> {
         //TODO zalgo this
-        return then{ _ in }
+        return map{ _ in }
     }
 
     /**
@@ -198,12 +179,12 @@ public extension Thenable where T: Sequence {
     }
 
     func map<U>(on: ExecutionContext? = NextMainRunloopContext(), transform: @escaping (T.Iterator.Element) throws -> U) -> Promise<[U]> {
-        return then(on: on){ try $0.map(transform) }
+        return map(on: on){ try $0.map(transform) }
     }
 
     /// `nil` rejects the resulting promise with `PMKError.flatMap`
     func flatMap<U>(on: ExecutionContext? = NextMainRunloopContext(), _ transform: @escaping (T.Iterator.Element) -> U?) -> Promise<[U]> {
-        return then(on: on) { values in
+        return map(on: on) { values in
             return try values.map { value in
                 guard let result = transform(value) else {
                     throw PMKError.flatMap(value, U.self)
@@ -215,20 +196,20 @@ public extension Thenable where T: Sequence {
 
     func flatMap<U>(on: ExecutionContext? = NextMainRunloopContext(), _ transform: @escaping (T.Iterator.Element) -> Promise<[U]>) -> Promise<[U]> {
         return then(on: on) { values in
-            return when(fulfilled: values.map(transform)).then(on: nil) {
+            return when(fulfilled: values.map(transform)).map(on: nil) {
                 $0.flatMap{ $0 }
             }
         }
     }
 
     func filter(on: ExecutionContext? = NextMainRunloopContext(), test: @escaping (T.Iterator.Element) -> Bool) -> Promise<[T.Iterator.Element]> {
-        return then(on: on) {
+        return map(on: on) {
             return $0.filter(test)
         }
     }
 
     func forEach(on: ExecutionContext? = NextMainRunloopContext(), _ body: @escaping (T.Iterator.Element) -> Void) -> Promise<T> {
-        return then(on: on) {
+        return map(on: on) {
             $0.forEach(body)
             return $0
         }
@@ -237,7 +218,7 @@ public extension Thenable where T: Sequence {
 
 public extension Thenable where T: Collection {
     var first: Promise<T.Iterator.Element> {
-        return then { aa in
+        return map { aa in
             if let a1 = aa.first {
                 return a1
             } else {
@@ -247,7 +228,7 @@ public extension Thenable where T: Collection {
     }
 
     var last: Promise<T.Iterator.Element> {
-        return then { aa in
+        return map { aa in
             if aa.isEmpty {
                 throw PMKError.badInput
             } else {
@@ -260,7 +241,7 @@ public extension Thenable where T: Collection {
 
 public extension Thenable where T: Sequence, T.Iterator.Element: Comparable {
     func sorted(on: ExecutionContext? = NextMainRunloopContext()) -> Promise<[T.Iterator.Element]> {
-        return then(on: on){ $0.sorted() }
+        return map(on: on){ $0.sorted() }
     }
 }
 
@@ -274,7 +255,7 @@ public extension Thenable {
      - Remark: This function is useful for parsing eg. JSON.
      */
     func flatMap<U>(_ transform: @escaping (T) throws -> U?) -> Promise<U> {
-        return then(on: nil) { value in
+        return map(on: nil) { value in
             guard let result = try transform(value) else {
                 throw PMKError.flatMap(value, U.self)
             }

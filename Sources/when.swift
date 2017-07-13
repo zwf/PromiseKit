@@ -1,19 +1,19 @@
 import Dispatch
 
 public func when<U, V>(fulfilled u: Promise<U>, _ v: Promise<V>) -> Promise<(U, V)> {
-    return when(fulfilled: [u.asVoid(), v.asVoid()]).then{ _ in (u.value!, v.value!) }
+    return when(fulfilled: [u.asVoid(), v.asVoid()]).map{ _ in (u.value!, v.value!) }
 }
 
 public func when<U, V, X>(fulfilled u: Promise<U>, _ v: Promise<V>, _ x: Promise<X>) -> Promise<(U, V, X)> {
-    return when(fulfilled: [u.asVoid(), v.asVoid(), x.asVoid()]).then{ _ in (u.value!, v.value!, x.value!) }
+    return when(fulfilled: [u.asVoid(), v.asVoid(), x.asVoid()]).map{ _ in (u.value!, v.value!, x.value!) }
 }
 
 public func when<U, V, X, Y>(fulfilled u: Promise<U>, _ v: Promise<V>, _ x: Promise<X>, _ y: Promise<Y>) -> Promise<(U, V, X, Y)> {
-    return when(fulfilled: [u.asVoid(), v.asVoid(), x.asVoid(), y.asVoid()]).then{ _ in (u.value!, v.value!, x.value!, y.value!) }
+    return when(fulfilled: [u.asVoid(), v.asVoid(), x.asVoid(), y.asVoid()]).map{ _ in (u.value!, v.value!, x.value!, y.value!) }
 }
 
 public func when<U, V, X, Y, Z>(fulfilled u: Promise<U>, _ v: Promise<V>, _ x: Promise<X>, _ y: Promise<Y>, _ z: Promise<Z>) -> Promise<(U, V, X, Y, Z)> {
-    return when(fulfilled: [u.asVoid(), v.asVoid(), x.asVoid(), y.asVoid(), z.asVoid()]).then{ _ in (u.value!, v.value!, x.value!, y.value!, z.value!) }
+    return when(fulfilled: [u.asVoid(), v.asVoid(), x.asVoid(), y.asVoid(), z.asVoid()]).map{ _ in (u.value!, v.value!, x.value!, y.value!, z.value!) }
 }
 
 /// - Remark: There is no `...` variant, because it is then confusing that you put a splat in and don't get a splat out, when compared with the typical usage for our above splatted kinds

@@ -11,7 +11,13 @@ public final class Guarantee<T>: Thenable, Mixin {
     let barrier = DispatchQueue(label: "org.promisekit.barrier", attributes: .concurrent)
     var _schrödinger: Schrödinger<T>
 
-    /// - See: `Guarantee()` for a resolved `Void` Guarantee.
+    /**
+      - See: `Guarantee()` for a resolved `Void` Guarantee.
+      - Remark: We would like `Guarantee(1)` to be the syntax. It makes sense as a wrapper: like
+        `Optional`. However this would make `init(sealant:` mistakenly invoke this initializer sometimes. Since
+        it could be the `value`. We could work around this by making `Guarantee(.foo) { }` the form of that
+        initializer, and we did for a time. But since Swift 4’s tuplegate is a thing, there's no point.
+     */
     public init(value: T) {
         _schrödinger = .resolved(value)
     }
@@ -56,8 +62,9 @@ extension Guarantee {
         return guarantee
     }
 
+    /// -Remark: not `then` due to Swift ambiguity
     @discardableResult
-    public func then<U>(on: ExecutionContext = NextMainRunloopContext(), execute body: @escaping (T) -> U) -> Guarantee<U> {
+    public func map<U>(on: ExecutionContext = NextMainRunloopContext(), execute body: @escaping (T) -> U) -> Guarantee<U> {
         let (guarantee, seal) = Guarantee<U>.pending()
         pipe { value in
             on.pmkAsync {
@@ -66,10 +73,16 @@ extension Guarantee {
         }
         return guarantee
     }
+
+    /// -Remark: not `then` due to Swift ambiguity
+    @discardableResult
+    func done(on: ExecutionContext = NextMainRunloopContext(), execute body: @escaping (T) -> Void) -> Guarantee<Void> {
+        return map(on: on, execute: body)
+    }
 }
 
 public extension Guarantee where T == Void {
     convenience init() {
-        self.init(())
+        self.init(value: ())
     }
 }

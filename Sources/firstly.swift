@@ -18,27 +18,13 @@
      }.then {
          URLSession.shared.dataTask(url: url3)
      }
-
- - Note: There is only a Promise version of this because otherwise this:
-
-       firstly {
-           print("hi")
-           return Promise(value: 3)
-       }.then {
-           XCTAssertEqual($0, 3)
-       }
-
-   Genreates this error:
-
-       Cannot convert return expression of type Promise<Int> to return type Guarantee<Int>
-
-   This is the case for pretty much any options we provide :(
  */
-public func firstly<T>(execute body: () throws -> Promise<T>) -> Promise<T> {
+public func firstly<U: Thenable>(execute body: () throws -> U) -> Promise<U.T> {
     do {
-        return try body()
+        let (promise, seal) = Promise<U.T>.pending()
+        try body().pipe(to: seal.resolve)
+        return promise
     } catch {
         return Promise(error: error)
     }
 }
-

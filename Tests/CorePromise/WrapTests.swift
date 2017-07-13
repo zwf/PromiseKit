@@ -17,7 +17,7 @@ class WrapTests: XCTestCase {
         wait { ex in
             Promise { seal in
                 KittenFetcher().fetch(with: seal.resolve)
-            }.then {
+            }.done {
                 XCTAssertEqual($0, 3)
                 ex.fulfill()
             }
@@ -66,7 +66,7 @@ class WrapTests: XCTestCase {
         wait { ex in
             Promise { seal in
                 KittenFetcher().fetch(with: seal.resolve)
-            }.then {
+            }.done {
                 XCTAssertEqual($0, 3)
                 ex.fulfill()
             }
@@ -99,9 +99,9 @@ class WrapTests: XCTestCase {
         wait { ex in
             Promise { seal in
                 KittenFetcher().fetch(with: seal.resolve)
-                }.then {
-                    XCTAssertEqual($0, 3)
-                    ex.fulfill()
+            }.done {
+                XCTAssertEqual($0, 3)
+                ex.fulfill()
             }
         }
     }
@@ -132,8 +132,8 @@ class WrapTests: XCTestCase {
         wait { ex in
             Promise { seal in
                 KittenFetcher().fetch(with: seal.resolve)
-                }.catch { error in
-                    if case PMKError.invalidCallingConvention = error { ex.fulfill() }
+            }.catch { error in
+                if case PMKError.invalidCallingConvention = error { ex.fulfill() }
             }
         }
     }
