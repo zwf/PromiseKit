@@ -52,16 +52,6 @@ public extension Thenable {
         return promise
     }
 
-    /// -Remark: not `then` due to Swift ambiguity
-    func done(on: ExecutionContext? = NextMainRunloopContext(), execute body: @escaping (T) throws -> Void) -> Promise<Void> {
-        return map(on: on, execute: body)
-    }
-
-    func asVoid() -> Promise<Void> {
-        //TODO zalgo this
-        return map{ _ in }
-    }
-
     /**
      Blocks this thread, so you know, don’t call this on a serial thread that
      any part of your chain may use. Like the main thread for example.

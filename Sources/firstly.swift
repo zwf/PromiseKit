@@ -28,3 +28,7 @@ public func firstly<U: Thenable>(execute body: () throws -> U) -> Promise<U.T> {
         return Promise(error: error)
     }
 }
+
+public func firstly<T>(execute body: () -> Guarantee<T>) -> Guarantee<T> {
+    return body()
+}

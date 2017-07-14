@@ -76,8 +76,18 @@ extension Guarantee {
 
     /// -Remark: not `then` due to Swift ambiguity
     @discardableResult
-    func done(on: ExecutionContext = NextMainRunloopContext(), execute body: @escaping (T) -> Void) -> Guarantee<Void> {
-        return map(on: on, execute: body)
+    public func done(on: ExecutionContext = NextMainRunloopContext(), execute body: @escaping (T) -> Void) -> Guarantee<T> {
+        pipe { value in
+            on.pmkAsync {
+                body(value)
+            }
+        }
+        return self
+    }
+
+    public func asVoid() -> Guarantee<Void> {
+        //TODO zalgo this
+        return map{ _ in }
     }
 }
 

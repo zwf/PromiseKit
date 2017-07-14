@@ -77,6 +77,20 @@ public final class Promise<T>: Thenable, Catchable, Mixin {
         let sealant = Sealant{ promise.schrödinger = .resolved($0) }
         return (promise, sealant)
     }
+
+    /// -Remark: not `then` due to Swift ambiguity
+    public func done(on: ExecutionContext? = NextMainRunloopContext(), execute body: @escaping (T) -> Void) -> Promise<T> {
+        pipe { result in
+            if case .fulfilled(let value) = result {
+                go(on){ body(value) }
+            }
+        }
+        return self
+    }
+
+    public func asVoid() -> Promise<Void> {
+        return map(on: nil){ _ in }
+    }
 }
 
 public extension Promise where T == Void {

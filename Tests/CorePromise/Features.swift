@@ -57,7 +57,7 @@ class FeatureRaceTests: XCTestCase {
 
         XCTAssert(p1 is Guarantee<Int>)
         XCTAssert(p2 is Guarantee<Int>)
-        XCTAssert(p3 is Guarantee<Int>)
+        XCTAssert(p3 is Promise<Int>)  // no array form because can't handle empty array input
         XCTAssert(p4 is Guarantee<Int>)
 
         let p5: Promise<Int> = after(.milliseconds(10)).map{ 1 }

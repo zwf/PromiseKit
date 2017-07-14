@@ -48,7 +48,7 @@ class Test226: XCTestCase {
                             exes[1].fulfill()
                         }
                         promise.catch { _ in XCTFail() }
-                        promise.done { value in
+                        promise.map { value in
                             XCTAssertEqual(value, sentinel)
                             XCTAssertEqual(++orderValidator, 3)
                             exes[2].fulfill()

@@ -8,7 +8,7 @@ class Test227: XCTestCase {
 
                 testFulfilled { promise1, expectation, _ in
                     let sentinel = arc4random()
-                    let promise2 = promise1.done { _ in throw Error.sentinel(sentinel) }
+                    let promise2 = promise1.map { _ in throw Error.sentinel(sentinel) }
 
                     promise2.catch {
                         if case Error.sentinel(let x) = $0, x == sentinel {
