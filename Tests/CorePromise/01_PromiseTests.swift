@@ -2,10 +2,6 @@ import PromiseKit
 import XCTest
 
 class PromiseTests: XCTestCase {
-    override func setUp() {
-        InjectedErrorUnhandler = { _ in }
-    }
-
     func testPending() {
         XCTAssertTrue(Promise<Void>.pending().promise.isPending)
         XCTAssertFalse(Promise(value: ()).isPending)
@@ -33,10 +29,10 @@ class PromiseTests: XCTestCase {
     func testDispatchQueueAsyncExtensionReturnsPromise() {
         let ex = expectation(description: "")
 
-        DispatchQueue.global().promise {
+        DispatchQueue.global().promise { _ -> Int in
             XCTAssertFalse(Thread.isMainThread)
             return 1
-        }.then { (one: Int) -> Void in
+        }.done { one in
             XCTAssertEqual(one, 1)
             ex.fulfill()
         }
@@ -49,7 +45,7 @@ class PromiseTests: XCTestCase {
 
         DispatchQueue.global().promise { _ -> Int in
             throw Error.dummy
-        }.then { _ -> Void in
+        }.done { _ in
             XCTFail()
         }.catch { _ in
             ex.fulfill()
@@ -59,21 +55,25 @@ class PromiseTests: XCTestCase {
     }
 
     func testCustomStringConvertible() {
-        XCTAssert("\(Promise<Void>.pending().promise)".contains("Pending"))
-        XCTAssert("\(Promise(value: ()))".contains("Fulfilled"))
-        XCTAssert("\(Promise<Void>(error: Error.dummy))".contains("Rejected"))
+        XCTAssertEqual(Promise<Int>.pending().promise.debugDescription, "Promise<Int>.pending(handlers: 0)")
+        XCTAssertEqual(Promise(value: ()).debugDescription, "Promise<()>.fulfilled(())")
+        XCTAssertEqual(Promise<String>(error: Error.dummy).debugDescription, "Promise<String>.rejected(Error.dummy)")
+
+        XCTAssertEqual("\(Promise<Int>.pending().promise)", "Promise(…Int)")
+        XCTAssertEqual("\(Promise(value: 3))", "Promise(3)")
+        XCTAssertEqual("\(Promise<Void>(error: Error.dummy))", "Promise(dummy)")
     }
 
     func testCannotFulfillWithError() {
-        let foo = Promise { fulfill, reject in
-            fulfill(Error.dummy)
+        let foo = Promise { seal in
+            seal.fulfill(Error.dummy)
         }
 
         let bar = Promise<Error>.pending()
 
         let baz = Promise(value: Error.dummy)
 
-        let bad = Promise(value: ()).then { Error.dummy }
+        let bad = Promise(value: ()).done { Error.dummy }
     }
 
 #if swift(>=3.1)
@@ -82,8 +82,9 @@ class PromiseTests: XCTestCase {
         XCTAssert(promise.value is Optional<Void>)
     }
 #endif
+
+    enum Error: Swift.Error {
+        case dummy
+    }
 }
 
-private enum Error: Swift.Error {
-    case dummy
-}
