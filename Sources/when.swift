@@ -235,13 +235,13 @@ public func when<T>(resolved promises: [Promise<T>]) -> Guarantee<[Result<T>]> {
     let rg = Guarantee<[Result<T>]>(.pending)
     for promise in promises {
         promise.pipe { result in
-            var done = false
             barrier.sync(flags: .barrier) {
                 countdown -= 1
-                done = countdown == 0
             }
-            if done {
-                rg.box.seal(promises.map { $0.result! })
+            barrier.sync {
+                if countdown == 0 {
+                    rg.box.seal(promises.map{ $0.result! })
+                }
             }
         }
     }
