@@ -80,6 +80,9 @@ class PromiseTests: XCTestCase {
     func testCanMakeVoidPromise() {
         let promise = Promise()
         XCTAssert(promise.value is Optional<Void>)
+
+        let guarantee = Guarantee()
+        XCTAssert(guarantee.value is Optional<Void>)
     }
 #endif
 

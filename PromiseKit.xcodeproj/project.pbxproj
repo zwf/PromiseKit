@@ -27,6 +27,8 @@
 		631751BF1D59768200A9DDDC /* 2.3.1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631751B31D59768200A9DDDC /* 2.3.1.swift */; };
 		631751C01D59768200A9DDDC /* 2.3.2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631751B41D59768200A9DDDC /* 2.3.2.swift */; };
 		631751C11D59768200A9DDDC /* 2.3.4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631751B51D59768200A9DDDC /* 2.3.4.swift */; };
+		632FBBE31F33B273008F8FBB /* Catchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FBBE21F33B273008F8FBB /* Catchable.swift */; };
+		632FBBE51F33B338008F8FBB /* CatchableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FBBE41F33B338008F8FBB /* CatchableTests.swift */; };
 		6330B5E11F2E991200D60528 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6330B5E01F2E991200D60528 /* Configuration.swift */; };
 		634AAD2B1EAE517C00B17855 /* fwd.h in Headers */ = {isa = PBXBuildFile; fileRef = 634AAD2A1EAE517C00B17855 /* fwd.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		635D641C1D59635300BC0AF5 /* 01_AnyPromiseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635D64071D59635300BC0AF5 /* 01_AnyPromiseTests.m */; };
@@ -122,6 +124,8 @@
 		631751B41D59768200A9DDDC /* 2.3.2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2.3.2.swift; sourceTree = "<group>"; };
 		631751B51D59768200A9DDDC /* 2.3.4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2.3.4.swift; sourceTree = "<group>"; };
 		631751B61D59768200A9DDDC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		632FBBE21F33B273008F8FBB /* Catchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Catchable.swift; path = Sources/Catchable.swift; sourceTree = "<group>"; };
+		632FBBE41F33B338008F8FBB /* CatchableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CatchableTests.swift; path = Tests/CorePromise/CatchableTests.swift; sourceTree = "<group>"; };
 		6330B5E01F2E991200D60528 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Configuration.swift; sourceTree = "<group>"; };
 		634AAD2A1EAE517C00B17855 /* fwd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fwd.h; path = Sources/fwd.h; sourceTree = "<group>"; };
 		635893921D5BE4E000F14B55 /* PromiseKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PromiseKit.playground; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				49A5584B1DC5172F00E4D01B /* 03_WrapTests.swift */,
 				635D64161D59635300BC0AF5 /* 98_StressTests.swift */,
 				635D64171D59635300BC0AF5 /* 99_RegressionTests.swift */,
+				632FBBE41F33B338008F8FBB /* CatchableTests.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				636A29191F1C156B001229C2 /* Promise.swift */,
 				636A29221F1C17A6001229C2 /* Guarantee.swift */,
 				636A29201F1C1716001229C2 /* Thenable.swift */,
+				632FBBE21F33B273008F8FBB /* Catchable.swift */,
 				63B912AC1F1E663E00D49110 /* Features */,
 				63B0AC691D595E6300FA21D9 /* Error.swift */,
 				636A29261F1C3927001229C2 /* Resolver.swift */,
@@ -549,6 +555,7 @@
 				635D64211D59635300BC0AF5 /* 02_PMKManifoldTests.m in Sources */,
 				635D64251D59635300BC0AF5 /* 03_JoinTests.m in Sources */,
 				635D64271D59635300BC0AF5 /* 03_RaceTests.swift in Sources */,
+				632FBBE51F33B338008F8FBB /* CatchableTests.swift in Sources */,
 				635D642B1D59635300BC0AF5 /* 98_StressTests.swift in Sources */,
 				635D64291D59635300BC0AF5 /* 03_WhenTests.m in Sources */,
 				635D641D1D59635300BC0AF5 /* 01_PromiseTests.swift in Sources */,
@@ -613,6 +620,7 @@
 				6330B5E11F2E991200D60528 /* Configuration.swift in Sources */,
 				63B912AA1F1D7B1300D49110 /* firstly.swift in Sources */,
 				636A29211F1C1716001229C2 /* Thenable.swift in Sources */,
+				632FBBE31F33B273008F8FBB /* Catchable.swift in Sources */,
 				63B0AC851D595E6300FA21D9 /* dispatch_promise.m in Sources */,
 				636A291F1F1C16FF001229C2 /* Box.swift in Sources */,
 				63B0AC821D595E6300FA21D9 /* AnyPromise.m in Sources */,

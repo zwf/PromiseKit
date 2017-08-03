@@ -46,7 +46,7 @@ public class Guarantee<T>: Thenable {
         box = EmptyBox()
     }
 
-    public class func pending() -> (guarantee: Guarantee<T>, resolver: (T) -> Void) {
+    public class func pending() -> (guarantee: Guarantee<T>, resolve: (T) -> Void) {
         return { ($0, $0.box.seal) }(Guarantee<T>(.pending))
     }
 }
@@ -112,7 +112,7 @@ public extension Guarantee {
 }
 
 #if swift(>=3.1)
-extension Guarantee where T == Void {
+public extension Guarantee where T == Void {
     convenience init() {
         self.init(value: Void())
     }
