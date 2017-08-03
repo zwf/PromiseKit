@@ -20,6 +20,10 @@ import Foundation
         }
     }
 
+    fileprivate init(box: Box<Any?>) {
+        self.box = box
+    }
+
     public func pipe(to body: @escaping (Result<Any?>) -> Void) {
         sewer {
             switch $0 {
@@ -43,6 +47,34 @@ import Foundation
         }
     }
 
+    fileprivate func sewer(to body: @escaping (Result<Any?>) -> Void) {
+        switch box.inspect() {
+        case .pending:
+            box.inspect {
+                switch $0 {
+                case .pending(let handlers):
+                    handlers.append {
+                        if let error = $0 as? Error {
+                            body(.rejected(error))
+                        } else {
+                            body(.fulfilled($0))
+                        }
+                    }
+                case .resolved(let error as Error):
+                    body(.rejected(error))
+                case .resolved(let value):
+                    body(.fulfilled(value))
+                }
+            }
+        case .resolved(let error as Error):
+            body(.rejected(error))
+        case .resolved(let value):
+            body(.fulfilled(value))
+        }
+    }
+}
+
+internal extension AnyPromise {
     @objc private var __value: Any? {
         switch box.inspect() {
         case .pending:
@@ -70,17 +102,13 @@ import Foundation
 
      - Returns: A resolved promise.
      */
-    @objc class func promiseWithValue(_ value: Any?) -> AnyPromise {
+    @objc private class func promiseWithValue(_ value: Any?) -> AnyPromise {
         switch value {
         case let promise as AnyPromise:
             return promise
         default:
             return AnyPromise(box: SealedBox(value: value))
         }
-    }
-
-    fileprivate init(box: Box<Any?>) {
-        self.box = box
     }
 
     /**
@@ -103,17 +131,23 @@ import Foundation
      - SeeAlso: http://promisekit.org/sealing-your-own-promises/
      - SeeAlso: http://promisekit.org/wrapping-delegation/
      */
-    @objc class func promiseWithResolverBlock(_ body: (@escaping (Any?) -> Void) -> Void) -> AnyPromise {
+    @objc private class func promiseWithResolverBlock(_ body: (@escaping (Any?) -> Void) -> Void) -> AnyPromise {
         let box = EmptyBox<Any?>()
         let rap = AnyPromise(box: box)
-        body(box.seal)
+        body { AnyPromise.apply($0, box) }
         return rap
     }
-}
 
+    private static func apply(_ value: Any?, _ box: Box<Any?>) {
+        switch value {
+        case let p as AnyPromise:
+            p.__pipe{ apply($0, box) }
+        default:
+            box.seal(value)
+        }
+    }
 
-internal extension AnyPromise {
-    @objc func __thenOn(_ q: DispatchQueue, execute body: @escaping (Any?) -> Any?) -> AnyPromise {
+    @objc private func __thenOn(_ q: DispatchQueue, execute body: @escaping (Any?) -> Any?) -> AnyPromise {
         let box = EmptyBox<Any?>()
         let rap = AnyPromise(box: box)
         ___pipe {
@@ -122,7 +156,7 @@ internal extension AnyPromise {
                 box.seal(error)
             case .fulfilled(let value):
                 q.async {
-                    box.seal(body(value))
+                    AnyPromise.apply(body(value), box)
                 }
             }
         }
@@ -130,14 +164,14 @@ internal extension AnyPromise {
 
     }
 
-    @objc func __catchOn(_ q: DispatchQueue, execute body: @escaping (Any?) -> Any?) -> AnyPromise {
+    @objc private func __catchOn(_ q: DispatchQueue, execute body: @escaping (Any?) -> Any?) -> AnyPromise {
         let box = EmptyBox<Any?>()
         let rap = AnyPromise(box: box)
         ___pipe {
             switch $0 {
             case .rejected(let error):
                 q.async {
-                    box.seal(body(error))
+                    AnyPromise.apply(body(error), box)
                 }
             case .fulfilled(let value):
                 box.seal(value)
@@ -146,7 +180,7 @@ internal extension AnyPromise {
         return rap
     }
 
-    @objc func __alwaysOn(_ q: DispatchQueue, execute body: @escaping () -> Void) -> AnyPromise {
+    @objc private func __alwaysOn(_ q: DispatchQueue, execute body: @escaping () -> Void) -> AnyPromise {
         let box = EmptyBox<Any?>()
         let rap = AnyPromise(box: box)
         __pipe { obj in
@@ -160,7 +194,7 @@ internal extension AnyPromise {
 
     /// converts NSErrors, feeds raw PMKManifolds
     /// exposed to ObjC for use in a few places
-    @objc func __pipe(_ body: @escaping (Any?) -> Void) {
+    @objc private func __pipe(_ body: @escaping (Any?) -> Void) {
         sewer {
             switch $0 {
             case .fulfilled(let value):
@@ -180,32 +214,6 @@ internal extension AnyPromise {
             case .rejected(let error):
                 body(.rejected(error as NSError))
             }
-        }
-    }
-
-    fileprivate func sewer(to body: @escaping (Result<Any?>) -> Void) {
-        switch box.inspect() {
-        case .pending:
-            box.inspect {
-                switch $0 {
-                case .pending(let handlers):
-                    handlers.append {
-                        if let error = $0 as? Error {
-                            body(.rejected(error))
-                        } else {
-                            body(.fulfilled($0))
-                        }
-                    }
-                case .resolved(let error as Error):
-                    body(.rejected(error))
-                case .resolved(let value):
-                    body(.fulfilled(value))
-                }
-            }
-        case .resolved(let error as Error):
-            body(.rejected(error))
-        case .resolved(let value):
-            body(.fulfilled(value))
         }
     }
 }
