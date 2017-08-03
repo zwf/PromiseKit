@@ -48,6 +48,22 @@ public extension CatchMixin {
         return rp
     }
 
+    /// recover into a Guarantee, note it is logically impossible for this to take a catchPolicy, thus allErrors are handled
+    func recover(on: DispatchQueue? = conf.Q.map, _ body: @escaping(Error) -> Guarantee<T>) -> Guarantee<T> {
+        let rg = Guarantee<T>(.pending)
+        pipe {
+            switch $0 {
+            case .fulfilled(let value):
+                rg.box.seal(value)
+            case .rejected(let error):
+                on.async {
+                    body(error).pipe(to: rg.box.seal)
+                }
+            }
+        }
+        return rg
+    }
+
     func ensure(on: DispatchQueue? = conf.Q.return, _ body: @escaping () -> Void) -> Promise<T> {
         let rp = Promise<T>(.pending)
         pipe { result in
@@ -71,5 +87,24 @@ public class PMKFinalizer {
 
     public func finally(_ body: @escaping () -> Void) {
         pending.guarantee.done(body)
+    }
+}
+
+
+public extension Thenable where T == Void {
+    func recover(on: DispatchQueue? = conf.Q.map, _ body: @escaping(Error) -> Void) -> Guarantee<Void> {
+        let rg = Guarantee<T>(.pending)
+        pipe {
+            switch $0 {
+            case .fulfilled:
+                rg.box.seal()
+            case .rejected(let error):
+                on.async {
+                    body(error)
+                    rg.box.seal()
+                }
+            }
+        }
+        return rg
     }
 }
