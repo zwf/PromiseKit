@@ -12,9 +12,13 @@ public class Promise<T>: Thenable, CatchMixin {
         box = SealedBox(value: .rejected(error))
     }
 
-    public init(_: PMKUnambiguousInitializer, resolver body: (Resolver<T>) -> Void) {
+    public init(_: PMKUnambiguousInitializer, resolver body: (Resolver<T>) throws -> Void) {
         box = EmptyBox()
-        body(Resolver(box))
+        do {
+            try body(Resolver(box))
+        } catch {
+            box.seal(.rejected(error))
+        }
     }
 
     public class func pending() -> (promise: Promise<T>, resolver: Resolver<T>) {

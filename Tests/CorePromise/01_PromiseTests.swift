@@ -86,5 +86,13 @@ class PromiseTests: XCTestCase {
     enum Error: Swift.Error {
         case dummy
     }
+
+    func testThrowInInitializer() {
+        let p = Promise<Void>(.pending) { _ in
+            throw Error.dummy
+        }
+        XCTAssertTrue(p.isRejected)
+        guard let err = p.error, case Error.dummy = err else { return XCTFail() }
+    }
 }
 
