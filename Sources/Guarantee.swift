@@ -8,7 +8,7 @@ public class Guarantee<T>: Thenable {
         box = SealedBox(value: value)
     }
 
-    public init(resolver body: (@escaping(T) -> Void) -> Void) {
+    public init(_: PMKUnambiguousInitializer, resolver body: (@escaping(T) -> Void) -> Void) {
         box = EmptyBox()
         body(box.seal)
     }
@@ -42,13 +42,12 @@ public class Guarantee<T>: Thenable {
         }
     }
 
-    init(_: PendingInitializer) {
+    init(_: PMKUnambiguousInitializer) {
         box = EmptyBox()
     }
 
     public class func pending() -> (guarantee: Guarantee<T>, resolver: (T) -> Void) {
-        let rg = Guarantee<T>(.pending)
-        return (rg, rg.box.seal)
+        return { ($0, $0.box.seal) }(Guarantee<T>(.pending))
     }
 }
 

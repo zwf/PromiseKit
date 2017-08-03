@@ -229,7 +229,7 @@ extension AnyPromise {
 #if swift(>=3.1)
 public extension Promise where T == Any? {
     convenience init(_ anyPromise: AnyPromise) {
-        self.init {
+        self.init(.pending) {
             anyPromise.pipe(to: $0.resolve)
         }
     }

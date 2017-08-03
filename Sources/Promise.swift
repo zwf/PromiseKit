@@ -12,14 +12,13 @@ public class Promise<T>: Thenable, CatchMixin {
         box = SealedBox(value: .rejected(error))
     }
 
-    public init(resolver body: (Resolver<T>) -> Void) {
+    public init(_: PMKUnambiguousInitializer, resolver body: (Resolver<T>) -> Void) {
         box = EmptyBox()
         body(Resolver(box))
     }
 
     public class func pending() -> (promise: Promise<T>, resolver: Resolver<T>) {
-        let rp = Promise<T>(.pending)
-        return (rp, Resolver(rp.box))
+        return { ($0, Resolver($0.box)) }(Promise<T>(.pending))
     }
 
     public func pipe(to: @escaping(Result<T>) -> Void) {
@@ -47,7 +46,7 @@ public class Promise<T>: Thenable, CatchMixin {
         }
     }
 
-    init(_: PendingInitializer) {
+    init(_: PMKUnambiguousInitializer) {
         box = EmptyBox()
     }
 }
@@ -143,5 +142,6 @@ public enum PMKNamespacer {
     case promise
 }
 
-// cannot nest < Swift 3.2
-enum PendingInitializer { case pending }
+public enum PMKUnambiguousInitializer {
+    case pending
+}

@@ -43,7 +43,7 @@ class Test232: XCTestCase {
                     let sentinel = arc4random()
 
                     func xFactory() -> Promise<UInt32> {
-                        return Promise { seal in
+                        return Promise(.pending) { seal in
                             after(ticks: 2) {
                                 seal.fulfill(sentinel)
                             }
@@ -79,7 +79,7 @@ class Test232: XCTestCase {
                     let sentinel = arc4random()
 
                     func xFactory() -> Promise<UInt32> {
-                        return Promise { seal in
+                        return Promise(.pending) { seal in
                             after(ticks: 2) {
                                 seal.reject(Error.sentinel(sentinel))
                             }

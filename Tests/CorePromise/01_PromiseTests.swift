@@ -65,7 +65,7 @@ class PromiseTests: XCTestCase {
     }
 
     func testCannotFulfillWithError() {
-        let foo = Promise { seal in
+        let foo = Promise(.pending) { seal in
             seal.fulfill(Error.dummy)
         }
 
