@@ -12,6 +12,11 @@ public class Promise<T>: Thenable, CatchMixin {
         box = SealedBox(value: .rejected(error))
     }
 
+    public init<U: Thenable>(_ bridge: U) where U.T == T {
+        box = EmptyBox()
+        bridge.pipe(to: box.seal)
+    }
+
     public init(_: PMKUnambiguousInitializer, resolver body: (Resolver<T>) throws -> Void) {
         box = EmptyBox()
         do {
@@ -90,16 +95,6 @@ public extension Promise {
         case .fulfilled(let value):
             return value
         }
-    }
-}
-
-public extension Promise where T: Sequence {
-    func map<U>(on: DispatchQueue? = conf.Q.map, _ transform: @escaping(T.Iterator.Element) throws -> U) -> Promise<[U]> {
-        return map(on: on){ try $0.map(transform) }
-    }
-
-    func flatMap<U>(on: DispatchQueue? = conf.Q.map, _ transform: @escaping(T.Iterator.Element) throws -> U?) -> Promise<[U]> {
-        return map(on: on){ try $0.flatMap(transform) }
     }
 }
 

@@ -160,3 +160,45 @@ public extension Thenable {
     }
 }
 
+public extension Thenable where T: Sequence {
+    func map<U>(on: DispatchQueue? = conf.Q.map, _ transform: @escaping(T.Iterator.Element) throws -> U) -> Promise<[U]> {
+        return map(on: on){ try $0.map(transform) }
+    }
+
+    func flatMap<U>(on: DispatchQueue? = conf.Q.map, _ transform: @escaping(T.Iterator.Element) throws -> U?) -> Promise<[U]> {
+        return map(on: on){ try $0.flatMap(transform) }
+    }
+
+    func filter(on: DispatchQueue? = conf.Q.map, test: @escaping (T.Iterator.Element) -> Bool) -> Promise<[T.Iterator.Element]> {
+        return map(on: on) { $0.filter(test) }
+    }
+}
+
+public extension Thenable where T: Collection {
+    var first: Promise<T.Iterator.Element> {
+        return map(on: nil) { aa in
+            if let a1 = aa.first {
+                return a1
+            } else {
+                throw PMKError.badInput
+            }
+        }
+    }
+
+    var last: Promise<T.Iterator.Element> {
+        return map(on: nil) { aa in
+            if aa.isEmpty {
+                throw PMKError.badInput
+            } else {
+                let i = aa.index(aa.endIndex, offsetBy: -1)
+                return aa[i]
+            }
+        }
+    }
+}
+
+public extension Thenable where T: Sequence, T.Iterator.Element: Comparable {
+    func sorted(on: DispatchQueue? = conf.Q.map) -> Promise<[T.Iterator.Element]> {
+        return map(on: on){ $0.sorted() }
+    }
+}
