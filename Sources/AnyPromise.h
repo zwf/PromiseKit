@@ -23,8 +23,8 @@ typedef void (^PMKResolver)(id __nullable) NS_REFINED_FOR_SWIFT;
 
 @interface AnyPromise (obj)
 
-+ (instancetype __nonnull)promiseWithResolverBlock:(void (^ __nonnull)(__nonnull PMKResolver))resolveBlock;
-+ (instancetype __nonnull)promiseWithValue:(__nullable id)value;
++ (instancetype __nonnull)promiseWithResolverBlock:(void (^ __nonnull)(__nonnull PMKResolver))resolveBlock NS_REFINED_FOR_SWIFT;
++ (instancetype __nonnull)promiseWithValue:(__nullable id)value NS_REFINED_FOR_SWIFT;
 
 /**
  The value of the asynchronous task this promise represents.
@@ -37,10 +37,10 @@ typedef void (^PMKResolver)(id __nullable) NS_REFINED_FOR_SWIFT;
 
  - Returns: The value with which this promise was resolved or `nil` if this promise is pending.
  */
-@property (nonatomic, readonly) __nullable id value;
+@property (nonatomic, readonly) __nullable id value NS_REFINED_FOR_SWIFT;
 
 /// - Returns: if the promise is pending resolution.
-@property (nonatomic, readonly) BOOL pending;
+@property (nonatomic, readonly) BOOL pending NS_REFINED_FOR_SWIFT;
 
 
 /**
@@ -254,9 +254,6 @@ extern id __nonnull __PMKArrayWithCount(NSUInteger, ...);
 
 - (instancetype __nonnull)init __attribute__((unavailable("It is illegal to create an unresolvable promise.")));
 + (instancetype __nonnull)new __attribute__((unavailable("It is illegal to create an unresolvable promise.")));
-+ (instancetype __nonnull)new:(__nullable id)resolvers __attribute__((unavailable("See +promiseWithResolverBlock:")));
-+ (instancetype __nonnull)when:(__nullable id)promises __attribute__((unavailable("See PMKWhen()")));
-+ (instancetype __nonnull)join:(__nullable id)promises __attribute__((unavailable("See PMKJoin()")));
 - (AnyPromise * __nonnull(^ __nonnull)(dispatch_block_t __nonnull))always __attribute__((unavailable("See -ensure")));
 - (AnyPromise * __nonnull(^ __nonnull)(dispatch_block_t __nonnull))alwaysOn __attribute__((unavailable("See -ensureOn")));
 - (AnyPromise * __nonnull(^ __nonnull)(dispatch_block_t __nonnull))finally __attribute__((unavailable("See -ensure")));
