@@ -217,22 +217,23 @@ public func when<It: IteratorProtocol>(fulfilled promiseIterator: It, concurrent
  - Returns: A new promise that resolves once all the provided promises resolve.
  - Warning: The returned promise can *not* be rejected.
  - Note: Any promises that error are implicitly consumed, your UnhandledErrorHandler will not be called.
+ - Remark: Doesn't take Thenable due to protocol associatedtype paradox
 */
-public func when<U: Thenable>(resolved thenables: U...) -> Guarantee<[Result<U.T>]> {
-    return when(resolved: thenables)
+public func when<T>(resolved promises: Promise<T>...) -> Guarantee<[Result<T>]> {
+    return when(resolved: promises)
 }
 
 /// Waits on all provided promises.
-public func when<U: Thenable>(resolved thenables: [U]) -> Guarantee<[Result<U.T>]> {
-    guard !thenables.isEmpty else {
+public func when<T>(resolved promises: [Promise<T>]) -> Guarantee<[Result<T>]> {
+    guard !promises.isEmpty else {
         return Guarantee(value: [])
     }
 
-    var countdown = thenables.count
+    var countdown = promises.count
     let barrier = DispatchQueue(label: "org.promisekit.barrier.join", attributes: .concurrent)
 
-    let rg = Guarantee<[Result<U.T>]>(.pending)
-    for promise in thenables {
+    let rg = Guarantee<[Result<T>]>(.pending)
+    for promise in promises {
         promise.pipe { result in
             var done = false
             barrier.sync(flags: .barrier) {
@@ -240,7 +241,7 @@ public func when<U: Thenable>(resolved thenables: [U]) -> Guarantee<[Result<U.T>
                 done = countdown == 0
             }
             if done {
-                rg.box.seal(thenables.map { $0.result! })
+                rg.box.seal(promises.map { $0.result! })
             }
         }
     }
