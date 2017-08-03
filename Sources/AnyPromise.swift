@@ -245,7 +245,7 @@ public extension Promise where T == Any? {
 #else
 extension AnyPromise {
     public func asPromise() -> Promise<Any?> {
-        return Promise(resolver: { resolve in
+        return Promise(.pending, resolver: { resolve in
             pipe { result in
                 switch result {
                 case .rejected(let error):
