@@ -22,7 +22,18 @@ public extension CatchMixin {
         }
         return finalizer
     }
+}
 
+public class PMKFinalizer {
+    let pending = Guarantee<Void>.pending()
+
+    public func finally(_ body: @escaping () -> Void) {
+        pending.guarantee.done(body)
+    }
+}
+
+
+public extension CatchMixin {
     func recover<U: Thenable>(on: DispatchQueue? = conf.Q.map, policy: CatchPolicy = conf.catchPolicy, _ body: @escaping(Error) throws -> U) -> Promise<T> where U.T == T {
         let rp = Promise<U.T>(.pending)
         pipe {
@@ -49,6 +60,7 @@ public extension CatchMixin {
     }
 
     /// recover into a Guarantee, note it is logically impossible for this to take a catchPolicy, thus allErrors are handled
+    @discardableResult
     func recover(on: DispatchQueue? = conf.Q.map, _ body: @escaping(Error) -> Guarantee<T>) -> Guarantee<T> {
         let rg = Guarantee<T>(.pending)
         pipe {
@@ -82,18 +94,11 @@ public extension CatchMixin {
     }
 }
 
-public class PMKFinalizer {
-    let pending = Guarantee<Void>.pending()
 
-    public func finally(_ body: @escaping () -> Void) {
-        pending.guarantee.done(body)
-    }
-}
-
-
-public extension Thenable where T == Void {
+public extension CatchMixin where T == Void {
+    @discardableResult
     func recover(on: DispatchQueue? = conf.Q.map, _ body: @escaping(Error) -> Void) -> Guarantee<Void> {
-        let rg = Guarantee<T>(.pending)
+        let rg = Guarantee<Void>(.pending)
         pipe {
             switch $0 {
             case .fulfilled:
@@ -102,6 +107,25 @@ public extension Thenable where T == Void {
                 on.async {
                     body(error)
                     rg.box.seal()
+                }
+            }
+        }
+        return rg
+    }
+
+    func recover(on: DispatchQueue? = conf.Q.map, _ body: @escaping(Error) throws -> Void) -> Promise<Void> {
+        let rg = Promise<Void>(.pending)
+        pipe {
+            switch $0 {
+            case .fulfilled:
+                rg.box.seal(.fulfilled())
+            case .rejected(let error):
+                on.async {
+                    do {
+                        rg.box.seal(.fulfilled(try body(error)))
+                    } catch {
+                        rg.box.seal(.rejected(error))
+                    }
                 }
             }
         }
